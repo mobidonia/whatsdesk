@@ -120,7 +120,7 @@ class AppServiceProvider extends ServiceProvider
             if (! Module::has('pricing')) {
 
                 //Check number of active companies
-                $activeCompanies = Company::where('active', 1)->count();
+                $activeCompanies = Company::where('active', config('settings.max_active_companies_without_pricing_plugin', 1))->count();
 
                 if ($activeCompanies >= 1) {
                     //Disable register route

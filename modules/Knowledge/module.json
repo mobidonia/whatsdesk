@@ -1,0 +1,103 @@
+{
+    "alias": "knowledge",
+    "description": "Knowledge base module for creating and managing company knowledge articles and categories",
+    "keywords": ["knowledge", "articles", "categories", "documentation", "help"],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Knowledge\\Providers\\Main"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": [],
+    "vendor_fields": [
+        {   
+            "separator": "Knowledge Base",
+            "title": "Enable Knowledge Base",
+            "key": "KNOWLEDGE_ENABLED",
+            "ftype": "bool",
+            "value": true
+        },
+        {
+            "title": "Knoledgge base heading",
+            "key": "KNOWLEDGE_BASE_HEADING",
+            "help": "Knowledge base heading",
+            "ftype": "input",
+            "value": "Knowledge Base heading"
+        },
+        {
+            "title": "Knowledge base subtitle",
+            "key": "KNOWLEDGE_BASE_SUBTITLE",
+            "help": "Knowledge base subtitle",
+            "ftype": "input",
+            "value": "Knowledge base subtitle"
+        },
+        {
+            "title": "Knowledge base search placeholder",
+            "key": "KNOWLEDGE_BASE_SEARCH_PLACEHOLDER",
+            "help": "Knowledge base search placeholder",
+            "ftype": "input",
+            "value": "Search for articles"
+        },
+        {
+            "title": "Show chat widget",
+            "key": "KNOWLEDGE_SHOW_CHAT_WIDGET",
+            "ftype": "bool",
+            "value": true
+        }
+    ],
+    "ownermenus": [
+        {
+            "id": "knowledgeMenu",
+            "name": "Help Center",
+            "icon": "ni ni-books text-blue",
+            "route": "knowledgebase.categories.index",
+            "onlyin": "wpbox,whatssupport",
+            "color": "#2563eb",
+            "priority": 5,
+            "isGroup": true,
+            "menus": [
+                
+                {
+                    "name": "Categories",
+                    "icon": "ni ni-folder-17 text-blue",
+                    "route": "knowledgebase.categories.index",
+                    "color": "#2563eb",
+                    "priority": 1
+                },
+                {
+                    "name": "Articles",
+                    "icon": "ni ni-single-copy-04 text-green",
+                    "route": "knowledgebase.articles.index",
+                    "color": "#2dce89",
+                    "priority": 2
+                }  
+            ]
+        }
+    ],
+    "global_fields": [
+        {
+            "separator": "Knowledge Base Settings",
+            "icon": "📚",
+            "title": "Enable Knowledge Base",
+            "key": "KNOWLEDGE_ENABLED",
+            "help": "Enable the knowledge base feature?",
+            "ftype": "bool",
+            "value": true
+        },
+        {
+            "title": "Articles Per Page",
+            "key": "KNOWLEDGE_ARTICLES_PER_PAGE",
+            "help": "Number of articles to show per page",
+            "ftype": "input",
+            "value": "10"
+        },
+        {
+            "title": "Allow Article Search",
+            "key": "KNOWLEDGE_ENABLE_SEARCH",
+            "help": "Allow users to search through articles?",
+            "ftype": "bool",
+            "value": true
+        }
+    ]
+}

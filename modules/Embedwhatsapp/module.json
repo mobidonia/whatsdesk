@@ -1,0 +1,18 @@
+{
+    "alias": "embedwhatsapp",
+    "version": "1.1",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Embedwhatsapp\\Providers\\Main"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": [],
+    "ownermenus":[
+    ],
+    "vendor_fields":[
+        ]
+}

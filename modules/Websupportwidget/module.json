@@ -1,0 +1,42 @@
+{
+    "alias": "websupportwidget",
+    "name": "Web Support Widget",
+    "version": "2.0",
+    "description": "Modern multi-tab support widget with Chat, Email, and Help functionality",
+    "keywords": ["widget", "support", "chat", "email", "help", "knowledge base"],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Websupportwidget\\Providers\\Main"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": [],
+    "ownermenus": [
+        
+    ],
+    "global_fields": [
+        {
+            "separator": "Web Support Widget",
+            "title": "Enable Web Support Widget",
+            "key": "WEB_SUPPORT_WIDGET_ENABLED",
+            "help": "Enable the advanced web support widget with Chat, Email, and Help tabs",
+            "ftype": "bool",
+            "value": true
+        },
+        {
+            "title": "Default Email Recipient",
+            "key": "WEB_SUPPORT_DEFAULT_EMAIL",
+            "help": "Default email address for widget contact forms",
+            "ftype": "input",
+            "value": ""
+        },
+        {
+            "title": "Widget Analytics Tracking",
+            "key": "WEB_SUPPORT_ANALYTICS_ENABLED",
+            "help": "Track widget usage and interactions",
+            "ftype": "bool",
+            "value": false
+        }
+    ]
+}

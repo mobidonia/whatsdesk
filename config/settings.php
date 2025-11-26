@@ -84,10 +84,11 @@ return
 
     'forceUserToPay' => env('FORCE_USERS_TO_PAY', false),
     'document_repository' => env('DOCUMENT_REPOSITORY', 'Modules\Privacygen\Models\Document'),
-    "apps_link" => env('APPS_GIST_LINK', 'https://gist.githubusercontent.com/dimovdaniel/b1621923f8bb30327a6a53a7d6562216/raw/apps.json'),
+    "apps_link" => env('APPS_GIST_LINK', 'https://gist.githubusercontent.com/dimovdaniel/dc975ce7603e37c3a6d746c5b58ca55d/raw/apps_whatsdesk.json'),
     'enable_credits' => env('ENABLE_CREDITS', false),
     'enable_multi_organizations' => env('ENABLE_MULTI_ORGANIZATIONS', true),
     'icon_type' => env('IS_DEMO', false) ? 'hero' : env('ICON_TYPE', 'hero'),
     'icon_size' => env('ICON_SIZE', '16px'),
+    'max_active_companies_without_pricing_plugin' => env('MAX_ACTIVE_COMPANIES_WITHOUT_PRICING_PLUGIN', 1),
 
 ];

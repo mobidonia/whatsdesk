@@ -1,0 +1,28 @@
+{
+    "alias": "agents",
+    "version":"1.3",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Agents\\Providers\\Main"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": [],
+    "vendor_fields":[{
+        "separator":"Agents",
+        "icon":"👥",
+        "title": "Enable agents",
+        "key": "agent_enable",
+        "ftype": "bool",
+        "value":true
+    },
+    {
+        "title": "Show only assigned chats to agents",
+        "key": "agent_assigned_only",
+        "ftype": "bool",
+        "value":false
+    }]
+}

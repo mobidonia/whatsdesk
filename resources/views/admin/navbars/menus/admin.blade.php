@@ -16,12 +16,13 @@
 
     @include('admin.navbars.menus.extra')
    
-
-    <li class="nav-item">
-        <a class="nav-link @if (Route::currentRouteName() == 'admin.landing') active @endif" href="{{ route('admin.landing') }}">
-            <i class="ni ni-html5 text-green"></i> {{ __('Landing Page') }}
-        </a>
-    </li>
+    @if (!config('settings.disable_landing_page',false))
+        <li class="nav-item">
+            <a class="nav-link @if (Route::currentRouteName() == 'admin.landing') active @endif" href="{{ route('admin.landing') }}">
+                <i class="ni ni-html5 text-green"></i> {{ __('Landing Page') }}
+            </a>
+        </li>
+    @endif
     @if (config('settings.pricing_enabled',true))
         <li class="nav-item ">
             <a class="nav-link @if (Route::currentRouteName() == 'plans.index') active @endif"

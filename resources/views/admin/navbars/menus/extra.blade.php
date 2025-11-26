@@ -9,16 +9,21 @@
     <div class="collapse @if (Route::currentRouteName() == $menu['route'] || collect($menu['menus'])->pluck('route')->contains(Route::currentRouteName())) show @endif"" id="navbar-{{  $menu['id'] }}" style="">
         <ul class="nav nav-sm flex-column">
             @foreach ($menu['menus'] as $submenu)
+            <!-- check if route exists -->
+            @if (Route::has($submenu['route']))
                 <li class="nav-item">
                     <a class="nav-link @if (Route::currentRouteName() == $submenu['route']) active @endif" href="{{ route($submenu['route'],isset($submenu['params'])?$submenu['params']:[]) }}">
                         <i class="{{ $submenu['icon'] }}"></i> {{ __($submenu['name']) }}
                     </a>
                 </li> 
+            @endif
             @endforeach
         </ul>
     </div>
 @else
     <li class="nav-item">
+        <!-- check if route exists -->
+        @if (Route::has($menu['route']))    
         <a  class="nav-link @if (Route::currentRouteName() == $menu['route']) active @endif" href="{{ route($menu['route'],isset($menu['params'])?$menu['params']:[]) }}"   >
             @if (isset($menu['svg']))
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="{{ $menu['color'] }}" viewBox="0 0 16 16">
@@ -31,6 +36,7 @@
              
             
         </a>
+        @endif
     </li> 
 @endif    
 @endforeach

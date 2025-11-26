@@ -1,0 +1,23 @@
+{
+    "alias": "flowmaker",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Flowmaker\\Providers\\Main"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": [],
+    "ownermenus":[
+        {
+            "name":"AI Flows",
+            "icon":"ni ni-controller text-blue",
+            "route":"flowmaker.not_installed",
+            "onlyin": "wpbox,whatssupport",
+            "color":"#2dce89",
+            "priority":10
+        }
+    ]
+}

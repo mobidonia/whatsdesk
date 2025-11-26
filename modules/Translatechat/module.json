@@ -1,0 +1,82 @@
+{
+    "alias": "translatechat",
+    "description": "",
+    "version": "1.1",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Translatechat\\Providers\\Main"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": [],
+    "hasSidebar":true,
+    "sidebarData":[
+        {
+            "name":"AI Message Style",
+            "app":"ai",
+            "icon":"https://mobidonia-demo.imgix.net/icons/ai2.svg",
+            "brandColor":"#007BFF",
+            "view":"translatechat::sideapp.app",
+            "script":"translatechat::sideapp.script"
+        }
+    ],
+    "vendor_fields":[
+        {
+            "separator":"Translation settings",
+            "icon":"🌐",
+            "title": "Enable translation",
+            "key": "translation_enabled",
+            "ftype": "bool",
+            "value":false
+        },
+        {
+            "title": "Translate incoming messages into",
+            "key":"translate_incoming_messages",
+            "ftype": "input",
+            "value": "Original"
+        }
+    ],
+    "global_fields":[
+        {
+            "separator":"OPEN AI",
+            "title": "Enable Open AI - used for translations and other AI tasks",
+            "key": "OPENAI_ENABLED",
+            "ftype": "bool",
+            "value":true
+        },
+        {
+            "title": "API KEY",
+            "key": "OPENAI_API_KEY",
+            "ftype": "input",
+            "type": "text",
+            "value":"",
+            "placeholder": "Enter openai.com API Key"
+        },
+        {
+            "title": "OPEN AI MODEL",
+            "key": "OPENAI_MODEL",
+            "ftype": "input",
+            "type": "text",
+            "value":"gpt-3.5-turbo",
+            "help": "gpt-4, gpt-4-32k, gpt-3.5-turbo"
+        },
+        {
+            "title": "Maximum tokens",
+            "key": "OPENAI_MAX_TOKENS",
+            "ftype": "input",
+            "type": "number",
+            "value":"3500",
+            "placeholder": "Enter amount of maximum tokens. More tokens = more content"
+        },
+        {
+            "title": "Available languages",
+            "key": "AVAILABLE_LANGUAGES",
+            "ftype": "input",
+            "value": "English,Spanish,German,Italian,Portuguese,Dutch,French,Japanese,Chinese",
+            "type":"text",
+            "placeholder": "Enter comma separated list of languages"
+        }
+    ]
+}

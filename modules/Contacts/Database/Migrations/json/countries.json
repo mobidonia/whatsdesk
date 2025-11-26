@@ -1,0 +1,1922 @@
+[
+    {
+      "Name": "Afghanistan",
+      "ISO2": "AF",
+      "ISO3": "AFG",
+      "Phone Code": 93,
+      "Time": "Asia/Kabul",
+      "Languages": "fa-AF,ps,uz-AF,tk"
+    },
+    {
+      "Name": "Albania",
+      "ISO2": "AL",
+      "ISO3": "ALB",
+      "Phone Code": 355,
+      "Time": "Europe/Tirane",
+      "Languages": "sq,el"
+    },
+    {
+      "Name": "Algeria",
+      "ISO2": "DZ",
+      "ISO3": "DZA",
+      "Phone Code": 213,
+      "Time": "Africa/Algiers",
+      "Languages": "ar-DZ"
+    },
+    {
+      "Name": "American Samoa",
+      "ISO2": "AS",
+      "ISO3": "ASM",
+      "Phone Code": "1-684",
+      "Time": "Pacific/Pago_Pago",
+      "Languages": "en-AS,sm,to"
+    },
+    {
+      "Name": "Andorra",
+      "ISO2": "AD",
+      "ISO3": "AND",
+      "Phone Code": 376,
+      "Time": "Europe/Andorra",
+      "Languages": "ca"
+    },
+    {
+      "Name": "Angola",
+      "ISO2": "AO",
+      "ISO3": "AGO",
+      "Phone Code": 244,
+      "Time": "Africa/Lagos",
+      "Languages": "pt-AO"
+    },
+    {
+      "Name": "Anguilla",
+      "ISO2": "AI",
+      "ISO3": "AIA",
+      "Phone Code": "1-264",
+      "Time": "America/Port_of_Spain",
+      "Languages": "en-AI"
+    },
+    {
+      "Name": "Antarctica",
+      "ISO2": "AQ",
+      "ISO3": "ATA",
+      "Phone Code": 672,
+      "Time": "Antarctica/Troll",
+      "Languages": ""
+    },
+    {
+      "Name": "Antigua and Barbuda",
+      "ISO2": "AG",
+      "ISO3": "ATG",
+      "Phone Code": "1-268",
+      "Time": "America/Antigua",
+      "Languages": "en-AG"
+    },
+    {
+      "Name": "Argentina",
+      "ISO2": "AR",
+      "ISO3": "ARG",
+      "Phone Code": 54,
+      "Time": "America/Argentina/Buenos_Aires",
+      "Languages": "es-AR,en,it,de,fr,gn"
+    },
+    {
+      "Name": "Armenia",
+      "ISO2": "AM",
+      "ISO3": "ARM",
+      "Phone Code": 374,
+      "Time": "Asia/Yerevan",
+      "Languages": "hy"
+    },
+    {
+      "Name": "Aruba",
+      "ISO2": "AW",
+      "ISO3": "ABW",
+      "Phone Code": 297,
+      "Time": "America/Curacao",
+      "Languages": "nl-AW,es,en"
+    },
+    {
+      "Name": "Australia",
+      "ISO2": "AU",
+      "ISO3": "AUS",
+      "Phone Code": 61,
+      "Time": "Australia/Sydney",
+      "Languages": "en-AU"
+    },
+    {
+      "Name": "Austria",
+      "ISO2": "AT",
+      "ISO3": "AUT",
+      "Phone Code": 43,
+      "Time": "Europe/Vienna",
+      "Languages": "de-AT,hr,hu,sl"
+    },
+    {
+      "Name": "Azerbaijan",
+      "ISO2": "AZ",
+      "ISO3": "AZE",
+      "Phone Code": 994,
+      "Time": "Asia/Baku",
+      "Languages": "az,ru,hy"
+    },
+    {
+      "Name": "Bahamas",
+      "ISO2": "BS",
+      "ISO3": "BHS",
+      "Phone Code": "1-242",
+      "Time": "America/Nassau",
+      "Languages": "en-BS"
+    },
+    {
+      "Name": "Bahrain",
+      "ISO2": "BH",
+      "ISO3": "BHR",
+      "Phone Code": 973,
+      "Time": "Asia/Bahrain",
+      "Languages": "ar-BH,en,fa,ur"
+    },
+    {
+      "Name": "Bangladesh",
+      "ISO2": "BD",
+      "ISO3": "BGD",
+      "Phone Code": 880,
+      "Time": "Asia/Dhaka",
+      "Languages": "bn-BD,en"
+    },
+    {
+      "Name": "Barbados",
+      "ISO2": "BB",
+      "ISO3": "BRB",
+      "Phone Code": "1-246",
+      "Time": "America/Barbados",
+      "Languages": "en-BB"
+    },
+    {
+      "Name": "Belarus",
+      "ISO2": "BY",
+      "ISO3": "BLR",
+      "Phone Code": 375,
+      "Time": "Europe/Minsk",
+      "Languages": "be,ru"
+    },
+    {
+      "Name": "Belgium",
+      "ISO2": "BE",
+      "ISO3": "BEL",
+      "Phone Code": 32,
+      "Time": "Europe/Brussels",
+      "Languages": "nl-BE,fr-BE,de-BE"
+    },
+    {
+      "Name": "Belize",
+      "ISO2": "BZ",
+      "ISO3": "BLZ",
+      "Phone Code": 501,
+      "Time": "America/Belize",
+      "Languages": "en-BZ,es"
+    },
+    {
+      "Name": "Benin",
+      "ISO2": "BJ",
+      "ISO3": "BEN",
+      "Phone Code": 229,
+      "Time": "Africa/Lagos",
+      "Languages": "fr-BJ"
+    },
+    {
+      "Name": "Bermuda",
+      "ISO2": "BM",
+      "ISO3": "BMU",
+      "Phone Code": "1-441",
+      "Time": "Atlantic/Bermuda",
+      "Languages": "en-BM,pt"
+    },
+    {
+      "Name": "Bhutan",
+      "ISO2": "BT",
+      "ISO3": "BTN",
+      "Phone Code": 975,
+      "Time": "Asia/Thimphu",
+      "Languages": "dz"
+    },
+    {
+      "Name": "Bolivia",
+      "ISO2": "BO",
+      "ISO3": "BOL",
+      "Phone Code": 591,
+      "Time": "America/La_Paz",
+      "Languages": "es-BO,qu,ay"
+    },
+    {
+      "Name": "Bosnia and Herzegovina",
+      "ISO2": "BA",
+      "ISO3": "BIH",
+      "Phone Code": 387,
+      "Time": "Europe/Belgrade",
+      "Languages": "bs,hr-BA,sr-BA"
+    },
+    {
+      "Name": "Botswana",
+      "ISO2": "BW",
+      "ISO3": "BWA",
+      "Phone Code": 267,
+      "Time": "Africa/Maputo",
+      "Languages": "en-BW,tn-BW"
+    },
+    {
+      "Name": "Brazil",
+      "ISO2": "BR",
+      "ISO3": "BRA",
+      "Phone Code": 55,
+      "Time": "America/Sao_Paulo",
+      "Languages": "pt-BR,es,en,fr"
+    },
+    {
+      "Name": "British Indian Ocean Territory",
+      "ISO2": "IO",
+      "ISO3": "IOT",
+      "Phone Code": 246,
+      "Time": "Indian/Chagos",
+      "Languages": "en-IO"
+    },
+    {
+      "Name": "British Virgin Islands",
+      "ISO2": "VG",
+      "ISO3": "VGB",
+      "Phone Code": "1-284",
+      "Time": "America/Port_of_Spain",
+      "Languages": "en-VG"
+    },
+    {
+      "Name": "Brunei",
+      "ISO2": "BN",
+      "ISO3": "BRN",
+      "Phone Code": 673,
+      "Time": "Asia/Brunei",
+      "Languages": "ms-BN,en-BN"
+    },
+    {
+      "Name": "Bulgaria",
+      "ISO2": "BG",
+      "ISO3": "BGR",
+      "Phone Code": 359,
+      "Time": "Europe/Sofia",
+      "Languages": "bg,tr-BG"
+    },
+    {
+      "Name": "Burkina Faso",
+      "ISO2": "BF",
+      "ISO3": "BFA",
+      "Phone Code": 226,
+      "Time": "Africa/Abidjan",
+      "Languages": "fr-BF"
+    },
+    {
+      "Name": "Burundi",
+      "ISO2": "BI",
+      "ISO3": "BDI",
+      "Phone Code": 257,
+      "Time": "Africa/Maputo",
+      "Languages": "fr-BI,rn"
+    },
+    {
+      "Name": "Cambodia",
+      "ISO2": "KH",
+      "ISO3": "KHM",
+      "Phone Code": 855,
+      "Time": "Asia/Phnom_Penh",
+      "Languages": "km,fr,en"
+    },
+    {
+      "Name": "Cameroon",
+      "ISO2": "CM",
+      "ISO3": "CMR",
+      "Phone Code": 237,
+      "Time": "Africa/Lagos",
+      "Languages": "en-CM,fr-CM"
+    },
+    {
+      "Name": "Canada",
+      "ISO2": "CA",
+      "ISO3": "CAN",
+      "Phone Code": 1,
+      "Time": "America/Toronto",
+      "Languages": "en-CA,fr-CA,iu"
+    },
+    {
+      "Name": "Cape Verde",
+      "ISO2": "CV",
+      "ISO3": "CPV",
+      "Phone Code": 238,
+      "Time": "Atlantic/Cape_Verde",
+      "Languages": "pt-CV"
+    },
+    {
+      "Name": "Cayman Islands",
+      "ISO2": "KY",
+      "ISO3": "CYM",
+      "Phone Code": "1-345",
+      "Time": "America/Cayman",
+      "Languages": "en-KY"
+    },
+    {
+      "Name": "Central African Republic",
+      "ISO2": "CF",
+      "ISO3": "CAF",
+      "Phone Code": 236,
+      "Time": "Africa/Lagos",
+      "Languages": "fr-CF,sg,ln,kg"
+    },
+    {
+      "Name": "Chad",
+      "ISO2": "TD",
+      "ISO3": "TCD",
+      "Phone Code": 235,
+      "Time": "Africa/Ndjamena",
+      "Languages": "fr-TD,ar-TD,sre"
+    },
+    {
+      "Name": "Chile",
+      "ISO2": "CL",
+      "ISO3": "CHL",
+      "Phone Code": 56,
+      "Time": "America/Santiago",
+      "Languages": "es-CL"
+    },
+    {
+      "Name": "China",
+      "ISO2": "CN",
+      "ISO3": "CHN",
+      "Phone Code": 86,
+      "Time": "Asia/Shanghai",
+      "Languages": "zh-CN,yue,wuu,dta,ug,za"
+    },
+    {
+      "Name": "Christmas Island",
+      "ISO2": "CX",
+      "ISO3": "CXR",
+      "Phone Code": 61,
+      "Time": "Indian/Christmas",
+      "Languages": "en,zh,ms-CC"
+    },
+    {
+      "Name": "Cocos Islands",
+      "ISO2": "CC",
+      "ISO3": "CCK",
+      "Phone Code": 61,
+      "Time": "Indian/Cocos",
+      "Languages": "ms-CC,en"
+    },
+    {
+      "Name": "Colombia",
+      "ISO2": "CO",
+      "ISO3": "COL",
+      "Phone Code": 57,
+      "Time": "America/Bogota",
+      "Languages": "es-CO"
+    },
+    {
+      "Name": "Comoros",
+      "ISO2": "KM",
+      "ISO3": "COM",
+      "Phone Code": 269,
+      "Time": "Indian/Comoro",
+      "Languages": "ar,fr-KM"
+    },
+    {
+      "Name": "Cook Islands",
+      "ISO2": "CK",
+      "ISO3": "COK",
+      "Phone Code": 682,
+      "Time": "Pacific/Rarotonga",
+      "Languages": "en-CK,mi"
+    },
+    {
+      "Name": "Costa Rica",
+      "ISO2": "CR",
+      "ISO3": "CRI",
+      "Phone Code": 506,
+      "Time": "America/Costa_Rica",
+      "Languages": "es-CR,en"
+    },
+    {
+      "Name": "Croatia",
+      "ISO2": "HR",
+      "ISO3": "HRV",
+      "Phone Code": 385,
+      "Time": "Europe/Belgrade",
+      "Languages": "hr-HR,sr"
+    },
+    {
+      "Name": "Cuba",
+      "ISO2": "CU",
+      "ISO3": "CUB",
+      "Phone Code": 53,
+      "Time": "America/Havana",
+      "Languages": "es-CU"
+    },
+    {
+      "Name": "Curacao",
+      "ISO2": "CW",
+      "ISO3": "CUW",
+      "Phone Code": 599,
+      "Time": "America/Curacao",
+      "Languages": "nl,pap"
+    },
+    {
+      "Name": "Cyprus",
+      "ISO2": "CY",
+      "ISO3": "CYP",
+      "Phone Code": 357,
+      "Time": "Asia/Nicosia",
+      "Languages": "el-CY,tr-CY,en"
+    },
+    {
+      "Name": "Czech Republic",
+      "ISO2": "CZ",
+      "ISO3": "CZE",
+      "Phone Code": 420,
+      "Time": "Europe/Prague",
+      "Languages": "cs,sk"
+    },
+    {
+      "Name": "Democratic Republic of the Congo",
+      "ISO2": "CD",
+      "ISO3": "COD",
+      "Phone Code": 243,
+      "Time": "Africa/Lagos",
+      "Languages": "fr-CD,ln,kg"
+    },
+    {
+      "Name": "Denmark",
+      "ISO2": "DK",
+      "ISO3": "DNK",
+      "Phone Code": 45,
+      "Time": "Europe/Copenhagen",
+      "Languages": "da-DK,en,fo,de-DK"
+    },
+    {
+      "Name": "Djibouti",
+      "ISO2": "DJ",
+      "ISO3": "DJI",
+      "Phone Code": 253,
+      "Time": "Africa/Djibouti",
+      "Languages": "fr-DJ,ar,so-DJ,aa"
+    },
+    {
+      "Name": "Dominica",
+      "ISO2": "DM",
+      "ISO3": "DMA",
+      "Phone Code": "1-767",
+      "Time": "America/Port_of_Spain",
+      "Languages": "en-DM"
+    },
+    {
+      "Name": "Dominican Republic",
+      "ISO2": "DO",
+      "ISO3": "DOM",
+      "Phone Code": "1-809, 1-829, 1-849",
+      "Time": "America/Santo_Domingo",
+      "Languages": "es-DO"
+    },
+    {
+      "Name": "East Timor",
+      "ISO2": "TL",
+      "ISO3": "TLS",
+      "Phone Code": 670,
+      "Time": "Asia/Dili",
+      "Languages": "tet,pt-TL,id,en"
+    },
+    {
+      "Name": "Ecuador",
+      "ISO2": "EC",
+      "ISO3": "ECU",
+      "Phone Code": 593,
+      "Time": "America/Guayaquil",
+      "Languages": "es-EC"
+    },
+    {
+      "Name": "Egypt",
+      "ISO2": "EG",
+      "ISO3": "EGY",
+      "Phone Code": 20,
+      "Time": "Africa/Cairo",
+      "Languages": "ar-EG,en,fr"
+    },
+    {
+      "Name": "El Salvador",
+      "ISO2": "SV",
+      "ISO3": "SLV",
+      "Phone Code": 503,
+      "Time": "America/El_Salvador",
+      "Languages": "es-SV"
+    },
+    {
+      "Name": "Equatorial Guinea",
+      "ISO2": "GQ",
+      "ISO3": "GNQ",
+      "Phone Code": 240,
+      "Time": "Africa/Lagos",
+      "Languages": "es-GQ,fr"
+    },
+    {
+      "Name": "Eritrea",
+      "ISO2": "ER",
+      "ISO3": "ERI",
+      "Phone Code": 291,
+      "Time": "Africa/Asmara",
+      "Languages": "aa-ER,ar,tig,kun,ti-ER"
+    },
+    {
+      "Name": "Estonia",
+      "ISO2": "EE",
+      "ISO3": "EST",
+      "Phone Code": 372,
+      "Time": "Europe/Tallinn",
+      "Languages": "et,ru"
+    },
+    {
+      "Name": "Ethiopia",
+      "ISO2": "ET",
+      "ISO3": "ETH",
+      "Phone Code": 251,
+      "Time": "Africa/Addis_Ababa",
+      "Languages": "am,en-ET,om-ET,ti-ET,so-ET,sid"
+    },
+    {
+      "Name": "Falkland Islands",
+      "ISO2": "FK",
+      "ISO3": "FLK",
+      "Phone Code": 500,
+      "Time": "Atlantic/Stanley",
+      "Languages": "en-FK"
+    },
+    {
+      "Name": "Faroe Islands",
+      "ISO2": "FO",
+      "ISO3": "FRO",
+      "Phone Code": 298,
+      "Time": "Atlantic/Faroe",
+      "Languages": "fo,da-FO"
+    },
+    {
+      "Name": "Fiji",
+      "ISO2": "FJ",
+      "ISO3": "FJI",
+      "Phone Code": 679,
+      "Time": "Pacific/Fiji",
+      "Languages": "en-FJ,fj"
+    },
+    {
+      "Name": "Finland",
+      "ISO2": "FI",
+      "ISO3": "FIN",
+      "Phone Code": 358,
+      "Time": "Europe/Helsinki",
+      "Languages": "fi-FI,sv-FI,smn"
+    },
+    {
+      "Name": "France",
+      "ISO2": "FR",
+      "ISO3": "FRA",
+      "Phone Code": 33,
+      "Time": "Europe/Paris",
+      "Languages": "fr-FR,frp,br,co,ca,eu,oc"
+    },
+    {
+      "Name": "French Polynesia",
+      "ISO2": "PF",
+      "ISO3": "PYF",
+      "Phone Code": 689,
+      "Time": "Pacific/Tahiti",
+      "Languages": "fr-PF,ty"
+    },
+    {
+      "Name": "Gabon",
+      "ISO2": "GA",
+      "ISO3": "GAB",
+      "Phone Code": 241,
+      "Time": "Africa/Lagos",
+      "Languages": "fr-GA"
+    },
+    {
+      "Name": "Gambia",
+      "ISO2": "GM",
+      "ISO3": "GMB",
+      "Phone Code": 220,
+      "Time": "Africa/Abidjan",
+      "Languages": "en-GM,mnk,wof,wo,ff"
+    },
+    {
+      "Name": "Georgia",
+      "ISO2": "GE",
+      "ISO3": "GEO",
+      "Phone Code": 995,
+      "Time": "Asia/Tbilisi",
+      "Languages": "ka,ru,hy,az"
+    },
+    {
+      "Name": "Germany",
+      "ISO2": "DE",
+      "ISO3": "DEU",
+      "Phone Code": 49,
+      "Time": "Europe/Berlin",
+      "Languages": "de"
+    },
+    {
+      "Name": "Ghana",
+      "ISO2": "GH",
+      "ISO3": "GHA",
+      "Phone Code": 233,
+      "Time": "Africa/Accra",
+      "Languages": "en-GH,ak,ee,tw"
+    },
+    {
+      "Name": "Gibraltar",
+      "ISO2": "GI",
+      "ISO3": "GIB",
+      "Phone Code": 350,
+      "Time": "Europe/Gibraltar",
+      "Languages": "en-GI,es,it,pt"
+    },
+    {
+      "Name": "Greece",
+      "ISO2": "GR",
+      "ISO3": "GRC",
+      "Phone Code": 30,
+      "Time": "Europe/Athens",
+      "Languages": "el-GR,en,fr"
+    },
+    {
+      "Name": "Greenland",
+      "ISO2": "GL",
+      "ISO3": "GRL",
+      "Phone Code": 299,
+      "Time": "America/Godthab",
+      "Languages": "kl,da-GL,en"
+    },
+    {
+      "Name": "Grenada",
+      "ISO2": "GD",
+      "ISO3": "GRD",
+      "Phone Code": "1-473",
+      "Time": "America/Port_of_Spain",
+      "Languages": "en-GD"
+    },
+    {
+      "Name": "Guam",
+      "ISO2": "GU",
+      "ISO3": "GUM",
+      "Phone Code": "1-671",
+      "Time": "Pacific/Guam",
+      "Languages": "en-GU,ch-GU"
+    },
+    {
+      "Name": "Guatemala",
+      "ISO2": "GT",
+      "ISO3": "GTM",
+      "Phone Code": 502,
+      "Time": "America/Guatemala",
+      "Languages": "es-GT"
+    },
+    {
+      "Name": "Guernsey",
+      "ISO2": "GG",
+      "ISO3": "GGY",
+      "Phone Code": "44-1481",
+      "Time": "Europe/London",
+      "Languages": "en,fr"
+    },
+    {
+      "Name": "Guinea",
+      "ISO2": "GN",
+      "ISO3": "GIN",
+      "Phone Code": 224,
+      "Time": "Africa/Abidjan",
+      "Languages": "fr-GN"
+    },
+    {
+      "Name": "Guinea-Bissau",
+      "ISO2": "GW",
+      "ISO3": "GNB",
+      "Phone Code": 245,
+      "Time": "Africa/Bissau",
+      "Languages": "pt-GW,pov"
+    },
+    {
+      "Name": "Guyana",
+      "ISO2": "GY",
+      "ISO3": "GUY",
+      "Phone Code": 592,
+      "Time": "America/Guyana",
+      "Languages": "en-GY"
+    },
+    {
+      "Name": "Haiti",
+      "ISO2": "HT",
+      "ISO3": "HTI",
+      "Phone Code": 509,
+      "Time": "America/Port-au-Prince",
+      "Languages": "ht,fr-HT"
+    },
+    {
+      "Name": "Honduras",
+      "ISO2": "HN",
+      "ISO3": "HND",
+      "Phone Code": 504,
+      "Time": "America/Tegucigalpa",
+      "Languages": "es-HN"
+    },
+    {
+      "Name": "Hong Kong",
+      "ISO2": "HK",
+      "ISO3": "HKG",
+      "Phone Code": 852,
+      "Time": "Asia/Hong_Kong",
+      "Languages": "zh-HK,yue,zh,en"
+    },
+    {
+      "Name": "Hungary",
+      "ISO2": "HU",
+      "ISO3": "HUN",
+      "Phone Code": 36,
+      "Time": "Europe/Budapest",
+      "Languages": "hu-HU"
+    },
+    {
+      "Name": "Iceland",
+      "ISO2": "IS",
+      "ISO3": "ISL",
+      "Phone Code": 354,
+      "Time": "Atlantic/Reykjavik",
+      "Languages": "is,en,de,da,sv,no"
+    },
+    {
+      "Name": "India",
+      "ISO2": "IN",
+      "ISO3": "IND",
+      "Phone Code": 91,
+      "Time": "Asia/Kolkata",
+      "Languages": "en-IN,hi,bn,te,mr,ta,ur,gu,kn,ml,or,pa,as,bh,sat,ks,ne,sd,kok,doi,mni,sit,sa,fr,lus,inc"
+    },
+    {
+      "Name": "Indonesia",
+      "ISO2": "ID",
+      "ISO3": "IDN",
+      "Phone Code": 62,
+      "Time": "Asia/Jakarta",
+      "Languages": "id,en,nl,jv"
+    },
+    {
+      "Name": "Iran",
+      "ISO2": "IR",
+      "ISO3": "IRN",
+      "Phone Code": 98,
+      "Time": "Asia/Tehran",
+      "Languages": "fa-IR,ku"
+    },
+    {
+      "Name": "Iraq",
+      "ISO2": "IQ",
+      "ISO3": "IRQ",
+      "Phone Code": 964,
+      "Time": "Asia/Baghdad",
+      "Languages": "ar-IQ,ku,hy"
+    },
+    {
+      "Name": "Ireland",
+      "ISO2": "IE",
+      "ISO3": "IRL",
+      "Phone Code": 353,
+      "Time": "Europe/Dublin",
+      "Languages": "en-IE,ga-IE"
+    },
+    {
+      "Name": "Isle of Man",
+      "ISO2": "IM",
+      "ISO3": "IMN",
+      "Phone Code": "44-1624",
+      "Time": "Europe/London",
+      "Languages": "en,gv"
+    },
+    {
+      "Name": "Israel",
+      "ISO2": "IL",
+      "ISO3": "ISR",
+      "Phone Code": 972,
+      "Time": "Asia/Jerusalem",
+      "Languages": "he,ar-IL,en-IL,"
+    },
+    {
+      "Name": "Italy",
+      "ISO2": "IT",
+      "ISO3": "ITA",
+      "Phone Code": 39,
+      "Time": "Europe/Rome",
+      "Languages": "it-IT,de-IT,fr-IT,sc,ca,co,sl"
+    },
+    {
+      "Name": "Ivory Coast",
+      "ISO2": "CI",
+      "ISO3": "CIV",
+      "Phone Code": 225,
+      "Time": "Africa/Abidjan",
+      "Languages": "fr-CI"
+    },
+    {
+      "Name": "Jamaica",
+      "ISO2": "JM",
+      "ISO3": "JAM",
+      "Phone Code": "1-876",
+      "Time": "America/Jamaica",
+      "Languages": "en-JM"
+    },
+    {
+      "Name": "Japan",
+      "ISO2": "JP",
+      "ISO3": "JPN",
+      "Phone Code": 81,
+      "Time": "Asia/Tokyo",
+      "Languages": "ja"
+    },
+    {
+      "Name": "Jersey",
+      "ISO2": "JE",
+      "ISO3": "JEY",
+      "Phone Code": "44-1534",
+      "Time": "Europe/London",
+      "Languages": "en,pt"
+    },
+    {
+      "Name": "Jordan",
+      "ISO2": "JO",
+      "ISO3": "JOR",
+      "Phone Code": 962,
+      "Time": "Asia/Amman",
+      "Languages": "ar-JO,en"
+    },
+    {
+      "Name": "Kazakhstan",
+      "ISO2": "KZ",
+      "ISO3": "KAZ",
+      "Phone Code": 7,
+      "Time": "Asia/Almaty",
+      "Languages": "kk,ru"
+    },
+    {
+      "Name": "Kenya",
+      "ISO2": "KE",
+      "ISO3": "KEN",
+      "Phone Code": 254,
+      "Time": "Africa/Nairobi",
+      "Languages": "en-KE,sw-KE"
+    },
+    {
+      "Name": "Kiribati",
+      "ISO2": "KI",
+      "ISO3": "KIR",
+      "Phone Code": 686,
+      "Time": "Pacific/Tarawa",
+      "Languages": "en-KI,gil"
+    },
+    {
+      "Name": "Kosovo",
+      "ISO2": "XK",
+      "ISO3": "XKX",
+      "Phone Code": 383,
+      "Time": "Europe/Belgrade",
+      "Languages": "sq,sr"
+    },
+    {
+      "Name": "Kuwait",
+      "ISO2": "KW",
+      "ISO3": "KWT",
+      "Phone Code": 965,
+      "Time": "Asia/Kuwait",
+      "Languages": "ar-KW,en"
+    },
+    {
+      "Name": "Kyrgyzstan",
+      "ISO2": "KG",
+      "ISO3": "KGZ",
+      "Phone Code": 996,
+      "Time": "Asia/Bishkek",
+      "Languages": "ky,uz,ru"
+    },
+    {
+      "Name": "Laos",
+      "ISO2": "LA",
+      "ISO3": "LAO",
+      "Phone Code": 856,
+      "Time": "Asia/Vientiane",
+      "Languages": "lo,fr,en"
+    },
+    {
+      "Name": "Latvia",
+      "ISO2": "LV",
+      "ISO3": "LVA",
+      "Phone Code": 371,
+      "Time": "Europe/Riga",
+      "Languages": "lv,ru,lt"
+    },
+    {
+      "Name": "Lebanon",
+      "ISO2": "LB",
+      "ISO3": "LBN",
+      "Phone Code": 961,
+      "Time": "Asia/Beirut",
+      "Languages": "ar-LB,fr-LB,en,hy"
+    },
+    {
+      "Name": "Lesotho",
+      "ISO2": "LS",
+      "ISO3": "LSO",
+      "Phone Code": 266,
+      "Time": "Africa/Johannesburg",
+      "Languages": "en-LS,st,zu,xh"
+    },
+    {
+      "Name": "Liberia",
+      "ISO2": "LR",
+      "ISO3": "LBR",
+      "Phone Code": 231,
+      "Time": "Africa/Monrovia",
+      "Languages": "en-LR"
+    },
+    {
+      "Name": "Libya",
+      "ISO2": "LY",
+      "ISO3": "LBY",
+      "Phone Code": 218,
+      "Time": "Africa/Tripoli",
+      "Languages": "ar-LY,it,en"
+    },
+    {
+      "Name": "Liechtenstein",
+      "ISO2": "LI",
+      "ISO3": "LIE",
+      "Phone Code": 423,
+      "Time": "Europe/Zurich",
+      "Languages": "de-LI"
+    },
+    {
+      "Name": "Lithuania",
+      "ISO2": "LT",
+      "ISO3": "LTU",
+      "Phone Code": 370,
+      "Time": "Europe/Vilnius",
+      "Languages": "lt,ru,pl"
+    },
+    {
+      "Name": "Luxembourg",
+      "ISO2": "LU",
+      "ISO3": "LUX",
+      "Phone Code": 352,
+      "Time": "Europe/Luxembourg",
+      "Languages": "lb,de-LU,fr-LU"
+    },
+    {
+      "Name": "Macau",
+      "ISO2": "MO",
+      "ISO3": "MAC",
+      "Phone Code": 853,
+      "Time": "Asia/Macau",
+      "Languages": "zh,zh-MO,pt"
+    },
+    {
+      "Name": "Macedonia",
+      "ISO2": "MK",
+      "ISO3": "MKD",
+      "Phone Code": 389,
+      "Time": "Europe/Belgrade",
+      "Languages": "mk,sq,tr,rmm,sr"
+    },
+    {
+      "Name": "Madagascar",
+      "ISO2": "MG",
+      "ISO3": "MDG",
+      "Phone Code": 261,
+      "Time": "Indian/Antananarivo",
+      "Languages": "fr-MG,mg"
+    },
+    {
+      "Name": "Malawi",
+      "ISO2": "MW",
+      "ISO3": "MWI",
+      "Phone Code": 265,
+      "Time": "Africa/Maputo",
+      "Languages": "ny,yao,tum,swk"
+    },
+    {
+      "Name": "Malaysia",
+      "ISO2": "MY",
+      "ISO3": "MYS",
+      "Phone Code": 60,
+      "Time": "Asia/Kuala_Lumpur",
+      "Languages": "ms-MY,en,zh,ta,te,ml,pa,th"
+    },
+    {
+      "Name": "Maldives",
+      "ISO2": "MV",
+      "ISO3": "MDV",
+      "Phone Code": 960,
+      "Time": "Indian/Maldives",
+      "Languages": "dv,en"
+    },
+    {
+      "Name": "Mali",
+      "ISO2": "ML",
+      "ISO3": "MLI",
+      "Phone Code": 223,
+      "Time": "Africa/Abidjan",
+      "Languages": "fr-ML,bm"
+    },
+    {
+      "Name": "Malta",
+      "ISO2": "MT",
+      "ISO3": "MLT",
+      "Phone Code": 356,
+      "Time": "Europe/Malta",
+      "Languages": "mt,en-MT"
+    },
+    {
+      "Name": "Marshall Islands",
+      "ISO2": "MH",
+      "ISO3": "MHL",
+      "Phone Code": 692,
+      "Time": "Pacific/Majuro",
+      "Languages": "mh,en-MH"
+    },
+    {
+      "Name": "Mauritania",
+      "ISO2": "MR",
+      "ISO3": "MRT",
+      "Phone Code": 222,
+      "Time": "Africa/Abidjan",
+      "Languages": "ar-MR,fuc,snk,fr,mey,wo"
+    },
+    {
+      "Name": "Mauritius",
+      "ISO2": "MU",
+      "ISO3": "MUS",
+      "Phone Code": 230,
+      "Time": "Indian/Mauritius",
+      "Languages": "en-MU,bho,fr"
+    },
+    {
+      "Name": "Mayotte",
+      "ISO2": "YT",
+      "ISO3": "MYT",
+      "Phone Code": 262,
+      "Time": "Indian/Mayotte",
+      "Languages": "fr-YT"
+    },
+    {
+      "Name": "Mexico",
+      "ISO2": "MX",
+      "ISO3": "MEX",
+      "Phone Code": 52,
+      "Time": "America/Mexico_City",
+      "Languages": "es-MX"
+    },
+    {
+      "Name": "Micronesia",
+      "ISO2": "FM",
+      "ISO3": "FSM",
+      "Phone Code": 691,
+      "Time": "Pacific/Pohnpei",
+      "Languages": "en-FM,chk,pon,yap,kos,uli,woe,nkr,kpg"
+    },
+    {
+      "Name": "Moldova",
+      "ISO2": "MD",
+      "ISO3": "MDA",
+      "Phone Code": 373,
+      "Time": "Europe/Chisinau",
+      "Languages": "ro,ru,gag,tr"
+    },
+    {
+      "Name": "Monaco",
+      "ISO2": "MC",
+      "ISO3": "MCO",
+      "Phone Code": 377,
+      "Time": "Europe/Monaco",
+      "Languages": "fr-MC,en,it"
+    },
+    {
+      "Name": "Mongolia",
+      "ISO2": "MN",
+      "ISO3": "MNG",
+      "Phone Code": 976,
+      "Time": "Asia/Ulaanbaatar",
+      "Languages": "mn,ru"
+    },
+    {
+      "Name": "Montenegro",
+      "ISO2": "ME",
+      "ISO3": "MNE",
+      "Phone Code": 382,
+      "Time": "Europe/Belgrade",
+      "Languages": "sr,hu,bs,sq,hr,rom"
+    },
+    {
+      "Name": "Montserrat",
+      "ISO2": "MS",
+      "ISO3": "MSR",
+      "Phone Code": "1-664",
+      "Time": "America/Port_of_Spain",
+      "Languages": "en-MS"
+    },
+    {
+      "Name": "Morocco",
+      "ISO2": "MA",
+      "ISO3": "MAR",
+      "Phone Code": 212,
+      "Time": "Africa/Casablanca",
+      "Languages": "ar-MA,fr"
+    },
+    {
+      "Name": "Mozambique",
+      "ISO2": "MZ",
+      "ISO3": "MOZ",
+      "Phone Code": 258,
+      "Time": "Africa/Maputo",
+      "Languages": "pt-MZ,vmw"
+    },
+    {
+      "Name": "Myanmar",
+      "ISO2": "MM",
+      "ISO3": "MMR",
+      "Phone Code": 95,
+      "Time": "Asia/Rangoon",
+      "Languages": "my"
+    },
+    {
+      "Name": "Namibia",
+      "ISO2": "NA",
+      "ISO3": "NAM",
+      "Phone Code": 264,
+      "Time": "Africa/Windhoek",
+      "Languages": "en-NA,af,de,hz,naq"
+    },
+    {
+      "Name": "Nauru",
+      "ISO2": "NR",
+      "ISO3": "NRU",
+      "Phone Code": 674,
+      "Time": "Pacific/Nauru",
+      "Languages": "na,en-NR"
+    },
+    {
+      "Name": "Nepal",
+      "ISO2": "NP",
+      "ISO3": "NPL",
+      "Phone Code": 977,
+      "Time": "Asia/Kathmandu",
+      "Languages": "ne,en"
+    },
+    {
+      "Name": "Netherlands",
+      "ISO2": "NL",
+      "ISO3": "NLD",
+      "Phone Code": 31,
+      "Time": "Europe/Amsterdam",
+      "Languages": "nl-NL,fy-NL"
+    },
+    {
+      "Name": "Netherlands Antilles",
+      "ISO2": "AN",
+      "ISO3": "ANT",
+      "Phone Code": 599,
+      "Time": "America/Curacao",
+      "Languages": "nl-AN,en,es"
+    },
+    {
+      "Name": "New Caledonia",
+      "ISO2": "NC",
+      "ISO3": "NCL",
+      "Phone Code": 687,
+      "Time": "Pacific/Noumea",
+      "Languages": "fr-NC"
+    },
+    {
+      "Name": "New Zealand",
+      "ISO2": "NZ",
+      "ISO3": "NZL",
+      "Phone Code": 64,
+      "Time": "Pacific/Auckland",
+      "Languages": "en-NZ,mi"
+    },
+    {
+      "Name": "Nicaragua",
+      "ISO2": "NI",
+      "ISO3": "NIC",
+      "Phone Code": 505,
+      "Time": "America/Managua",
+      "Languages": "es-NI,en"
+    },
+    {
+      "Name": "Niger",
+      "ISO2": "NE",
+      "ISO3": "NER",
+      "Phone Code": 227,
+      "Time": "Africa/Lagos",
+      "Languages": "fr-NE,ha,kr,dje"
+    },
+    {
+      "Name": "Nigeria",
+      "ISO2": "NG",
+      "ISO3": "NGA",
+      "Phone Code": 234,
+      "Time": "Africa/Lagos",
+      "Languages": "en-NG,ha,yo,ig,ff"
+    },
+    {
+      "Name": "Niue",
+      "ISO2": "NU",
+      "ISO3": "NIU",
+      "Phone Code": 683,
+      "Time": "Pacific/Niue",
+      "Languages": "niu,en-NU"
+    },
+    {
+      "Name": "North Korea",
+      "ISO2": "KP",
+      "ISO3": "PRK",
+      "Phone Code": 850,
+      "Time": "Asia/Pyongyang",
+      "Languages": "ko-KP"
+    },
+    {
+      "Name": "Northern Mariana Islands",
+      "ISO2": "MP",
+      "ISO3": "MNP",
+      "Phone Code": "1-670",
+      "Time": "Pacific/Saipan",
+      "Languages": "fil,tl,zh,ch-MP,en-MP"
+    },
+    {
+      "Name": "Norway",
+      "ISO2": "NO",
+      "ISO3": "NOR",
+      "Phone Code": 47,
+      "Time": "Europe/Oslo",
+      "Languages": "no,nb,nn,se,fi"
+    },
+    {
+      "Name": "Oman",
+      "ISO2": "OM",
+      "ISO3": "OMN",
+      "Phone Code": 968,
+      "Time": "Asia/Muscat",
+      "Languages": "ar-OM,en,bal,ur"
+    },
+    {
+      "Name": "Pakistan",
+      "ISO2": "PK",
+      "ISO3": "PAK",
+      "Phone Code": 92,
+      "Time": "Asia/Karachi",
+      "Languages": "ur-PK,en-PK,pa,sd,ps,brh"
+    },
+    {
+      "Name": "Palau",
+      "ISO2": "PW",
+      "ISO3": "PLW",
+      "Phone Code": 680,
+      "Time": "Pacific/Palau",
+      "Languages": "pau,sov,en-PW,tox,ja,fil,zh"
+    },
+    {
+      "Name": "Palestine",
+      "ISO2": "PS",
+      "ISO3": "PSE",
+      "Phone Code": 970,
+      "Time": "Asia/Hebron",
+      "Languages": "ar-PS"
+    },
+    {
+      "Name": "Panama",
+      "ISO2": "PA",
+      "ISO3": "PAN",
+      "Phone Code": 507,
+      "Time": "America/Panama",
+      "Languages": "es-PA,en"
+    },
+    {
+      "Name": "Papua New Guinea",
+      "ISO2": "PG",
+      "ISO3": "PNG",
+      "Phone Code": 675,
+      "Time": "Pacific/Port_Moresby",
+      "Languages": "en-PG,ho,meu,tpi"
+    },
+    {
+      "Name": "Paraguay",
+      "ISO2": "PY",
+      "ISO3": "PRY",
+      "Phone Code": 595,
+      "Time": "America/Asuncion",
+      "Languages": "es-PY,gn"
+    },
+    {
+      "Name": "Peru",
+      "ISO2": "PE",
+      "ISO3": "PER",
+      "Phone Code": 51,
+      "Time": "America/Lima",
+      "Languages": "es-PE,qu,ay"
+    },
+    {
+      "Name": "Philippines",
+      "ISO2": "PH",
+      "ISO3": "PHL",
+      "Phone Code": 63,
+      "Time": "Asia/Manila",
+      "Languages": "tl,en-PH,fil"
+    },
+    {
+      "Name": "Pitcairn",
+      "ISO2": "PN",
+      "ISO3": "PCN",
+      "Phone Code": 64,
+      "Time": "Pacific/Pitcairn",
+      "Languages": "en-PN"
+    },
+    {
+      "Name": "Poland",
+      "ISO2": "PL",
+      "ISO3": "POL",
+      "Phone Code": 48,
+      "Time": "Europe/Warsaw",
+      "Languages": "pl"
+    },
+    {
+      "Name": "Portugal",
+      "ISO2": "PT",
+      "ISO3": "PRT",
+      "Phone Code": 351,
+      "Time": "Europe/Lisbon",
+      "Languages": "pt-PT,mwl"
+    },
+    {
+      "Name": "Puerto Rico",
+      "ISO2": "PR",
+      "ISO3": "PRI",
+      "Phone Code": "1-787, 1-939",
+      "Time": "America/Puerto_Rico",
+      "Languages": "en-PR,es-PR"
+    },
+    {
+      "Name": "Qatar",
+      "ISO2": "QA",
+      "ISO3": "QAT",
+      "Phone Code": 974,
+      "Time": "Asia/Qatar",
+      "Languages": "ar-QA,es"
+    },
+    {
+      "Name": "Republic of the Congo",
+      "ISO2": "CG",
+      "ISO3": "COG",
+      "Phone Code": 242,
+      "Time": "Africa/Lagos",
+      "Languages": "fr-CG,kg,ln-CG"
+    },
+    {
+      "Name": "Reunion",
+      "ISO2": "RE",
+      "ISO3": "REU",
+      "Phone Code": 262,
+      "Time": "Indian/Reunion",
+      "Languages": "fr-RE"
+    },
+    {
+      "Name": "Romania",
+      "ISO2": "RO",
+      "ISO3": "ROU",
+      "Phone Code": 40,
+      "Time": "Europe/Bucharest",
+      "Languages": "ro,hu,rom"
+    },
+    {
+      "Name": "Russia",
+      "ISO2": "RU",
+      "ISO3": "RUS",
+      "Phone Code": 7,
+      "Time": "Europe/Moscow",
+      "Languages": "ru,tt,xal,cau,ady,kv,ce,tyv,cv,udm,tut,mns,bua,myv,mdf,chm,ba,inh,tut,kbd,krc,ava,sah,nog"
+    },
+    {
+      "Name": "Rwanda",
+      "ISO2": "RW",
+      "ISO3": "RWA",
+      "Phone Code": 250,
+      "Time": "Africa/Maputo",
+      "Languages": "rw,en-RW,fr-RW,sw"
+    },
+    {
+      "Name": "Saint Barthelemy",
+      "ISO2": "BL",
+      "ISO3": "BLM",
+      "Phone Code": 590,
+      "Time": "America/Port_of_Spain",
+      "Languages": "fr"
+    },
+    {
+      "Name": "Saint Helena",
+      "ISO2": "SH",
+      "ISO3": "SHN",
+      "Phone Code": 290,
+      "Time": "Africa/Abidjan",
+      "Languages": "en-SH"
+    },
+    {
+      "Name": "Saint Kitts and Nevis",
+      "ISO2": "KN",
+      "ISO3": "KNA",
+      "Phone Code": "1-869",
+      "Time": "America/Port_of_Spain",
+      "Languages": "en-KN"
+    },
+    {
+      "Name": "Saint Lucia",
+      "ISO2": "LC",
+      "ISO3": "LCA",
+      "Phone Code": "1-758",
+      "Time": "America/Port_of_Spain",
+      "Languages": "en-LC"
+    },
+    {
+      "Name": "Saint Martin",
+      "ISO2": "MF",
+      "ISO3": "MAF",
+      "Phone Code": 590,
+      "Time": "America/Port_of_Spain",
+      "Languages": "fr"
+    },
+    {
+      "Name": "Saint Pierre and Miquelon",
+      "ISO2": "PM",
+      "ISO3": "SPM",
+      "Phone Code": 508,
+      "Time": "America/Miquelon",
+      "Languages": "fr-PM"
+    },
+    {
+      "Name": "Saint Vincent and the Grenadines",
+      "ISO2": "VC",
+      "ISO3": "VCT",
+      "Phone Code": "1-784",
+      "Time": "America/Port_of_Spain",
+      "Languages": "en-VC,fr"
+    },
+    {
+      "Name": "Samoa",
+      "ISO2": "WS",
+      "ISO3": "WSM",
+      "Phone Code": 685,
+      "Time": "Pacific/Apia",
+      "Languages": "sm,en-WS"
+    },
+    {
+      "Name": "San Marino",
+      "ISO2": "SM",
+      "ISO3": "SMR",
+      "Phone Code": 378,
+      "Time": "Europe/Rome",
+      "Languages": "it-SM"
+    },
+    {
+      "Name": "Sao Tome and Principe",
+      "ISO2": "ST",
+      "ISO3": "STP",
+      "Phone Code": 239,
+      "Time": "Africa/Abidjan",
+      "Languages": "pt-ST"
+    },
+    {
+      "Name": "Saudi Arabia",
+      "ISO2": "SA",
+      "ISO3": "SAU",
+      "Phone Code": 966,
+      "Time": "Asia/Riyadh",
+      "Languages": "ar-SA"
+    },
+    {
+      "Name": "Senegal",
+      "ISO2": "SN",
+      "ISO3": "SEN",
+      "Phone Code": 221,
+      "Time": "Africa/Abidjan",
+      "Languages": "fr-SN,wo,fuc,mnk"
+    },
+    {
+      "Name": "Serbia",
+      "ISO2": "RS",
+      "ISO3": "SRB",
+      "Phone Code": 381,
+      "Time": "Europe/Belgrade",
+      "Languages": "sr,hu,bs,rom"
+    },
+    {
+      "Name": "Seychelles",
+      "ISO2": "SC",
+      "ISO3": "SYC",
+      "Phone Code": 248,
+      "Time": "Indian/Mahe",
+      "Languages": "en-SC,fr-SC"
+    },
+    {
+      "Name": "Sierra Leone",
+      "ISO2": "SL",
+      "ISO3": "SLE",
+      "Phone Code": 232,
+      "Time": "Africa/Abidjan",
+      "Languages": "en-SL,men,tem"
+    },
+    {
+      "Name": "Singapore",
+      "ISO2": "SG",
+      "ISO3": "SGP",
+      "Phone Code": 65,
+      "Time": "Asia/Singapore",
+      "Languages": "cmn,en-SG,ms-SG,ta-SG,zh-SG"
+    },
+    {
+      "Name": "Sint Maarten",
+      "ISO2": "SX",
+      "ISO3": "SXM",
+      "Phone Code": "1-721",
+      "Time": "America/Curacao",
+      "Languages": "nl,en"
+    },
+    {
+      "Name": "Slovakia",
+      "ISO2": "SK",
+      "ISO3": "SVK",
+      "Phone Code": 421,
+      "Time": "Europe/Prague",
+      "Languages": "sk,hu"
+    },
+    {
+      "Name": "Slovenia",
+      "ISO2": "SI",
+      "ISO3": "SVN",
+      "Phone Code": 386,
+      "Time": "Europe/Belgrade",
+      "Languages": "sl,sh"
+    },
+    {
+      "Name": "Solomon Islands",
+      "ISO2": "SB",
+      "ISO3": "SLB",
+      "Phone Code": 677,
+      "Time": "Pacific/Guadalcanal",
+      "Languages": "en-SB,tpi"
+    },
+    {
+      "Name": "Somalia",
+      "ISO2": "SO",
+      "ISO3": "SOM",
+      "Phone Code": 252,
+      "Time": "Africa/Mogadishu",
+      "Languages": "so-SO,ar-SO,it,en-SO"
+    },
+    {
+      "Name": "South Africa",
+      "ISO2": "ZA",
+      "ISO3": "ZAF",
+      "Phone Code": 27,
+      "Time": "Africa/Johannesburg",
+      "Languages": "zu,xh,af,nso,en-ZA,tn,st,ts,ss,ve,nr"
+    },
+    {
+      "Name": "South Korea",
+      "ISO2": "KR",
+      "ISO3": "KOR",
+      "Phone Code": 82,
+      "Time": "Asia/Seoul",
+      "Languages": "ko-KR,en"
+    },
+    {
+      "Name": "South Sudan",
+      "ISO2": "SS",
+      "ISO3": "SSD",
+      "Phone Code": 211,
+      "Time": "Africa/Khartoum",
+      "Languages": "en"
+    },
+    {
+      "Name": "Spain",
+      "ISO2": "ES",
+      "ISO3": "ESP",
+      "Phone Code": 34,
+      "Time": "Europe/Madrid",
+      "Languages": "es-ES,ca,gl,eu,oc"
+    },
+    {
+      "Name": "Sri Lanka",
+      "ISO2": "LK",
+      "ISO3": "LKA",
+      "Phone Code": 94,
+      "Time": "Asia/Colombo",
+      "Languages": "si,ta,en"
+    },
+    {
+      "Name": "Sudan",
+      "ISO2": "SD",
+      "ISO3": "SDN",
+      "Phone Code": 249,
+      "Time": "Africa/Khartoum",
+      "Languages": "ar-SD,en,fia"
+    },
+    {
+      "Name": "Suriname",
+      "ISO2": "SR",
+      "ISO3": "SUR",
+      "Phone Code": 597,
+      "Time": "America/Paramaribo",
+      "Languages": "nl-SR,en,srn,hns,jv"
+    },
+    {
+      "Name": "Svalbard and Jan Mayen",
+      "ISO2": "SJ",
+      "ISO3": "SJM",
+      "Phone Code": 47,
+      "Time": "Europe/Oslo",
+      "Languages": "no,ru"
+    },
+    {
+      "Name": "Swaziland",
+      "ISO2": "SZ",
+      "ISO3": "SWZ",
+      "Phone Code": 268,
+      "Time": "Africa/Johannesburg",
+      "Languages": "en-SZ,ss-SZ"
+    },
+    {
+      "Name": "Sweden",
+      "ISO2": "SE",
+      "ISO3": "SWE",
+      "Phone Code": 46,
+      "Time": "Europe/Stockholm",
+      "Languages": "sv-SE,se,sma,fi-SE"
+    },
+    {
+      "Name": "Switzerland",
+      "ISO2": "CH",
+      "ISO3": "CHE",
+      "Phone Code": 41,
+      "Time": "Europe/Zurich",
+      "Languages": "de-CH,fr-CH,it-CH,rm"
+    },
+    {
+      "Name": "Syria",
+      "ISO2": "SY",
+      "ISO3": "SYR",
+      "Phone Code": 963,
+      "Time": "Asia/Damascus",
+      "Languages": "ar-SY,ku,hy,arc,fr,en"
+    },
+    {
+      "Name": "Taiwan",
+      "ISO2": "TW",
+      "ISO3": "TWN",
+      "Phone Code": 886,
+      "Time": "Asia/Taipei",
+      "Languages": "zh-TW,zh,nan,hak"
+    },
+    {
+      "Name": "Tajikistan",
+      "ISO2": "TJ",
+      "ISO3": "TJK",
+      "Phone Code": 992,
+      "Time": "Asia/Dushanbe",
+      "Languages": "tg,ru"
+    },
+    {
+      "Name": "Tanzania",
+      "ISO2": "TZ",
+      "ISO3": "TZA",
+      "Phone Code": 255,
+      "Time": "Africa/Dar_es_Salaam",
+      "Languages": "sw-TZ,en,ar"
+    },
+    {
+      "Name": "Thailand",
+      "ISO2": "TH",
+      "ISO3": "THA",
+      "Phone Code": 66,
+      "Time": "Asia/Bangkok",
+      "Languages": "th,en"
+    },
+    {
+      "Name": "Togo",
+      "ISO2": "TG",
+      "ISO3": "TGO",
+      "Phone Code": 228,
+      "Time": "Africa/Abidjan",
+      "Languages": "fr-TG,ee,hna,kbp,dag,ha"
+    },
+    {
+      "Name": "Tokelau",
+      "ISO2": "TK",
+      "ISO3": "TKL",
+      "Phone Code": 690,
+      "Time": "Pacific/Fakaofo",
+      "Languages": "tkl,en-TK"
+    },
+    {
+      "Name": "Tonga",
+      "ISO2": "TO",
+      "ISO3": "TON",
+      "Phone Code": 676,
+      "Time": "Pacific/Tongatapu",
+      "Languages": "to,en-TO"
+    },
+    {
+      "Name": "Trinidad and Tobago",
+      "ISO2": "TT",
+      "ISO3": "TTO",
+      "Phone Code": "1-868",
+      "Time": "America/Port_of_Spain",
+      "Languages": "en-TT,hns,fr,es,zh"
+    },
+    {
+      "Name": "Tunisia",
+      "ISO2": "TN",
+      "ISO3": "TUN",
+      "Phone Code": 216,
+      "Time": "Africa/Tunis",
+      "Languages": "ar-TN,fr"
+    },
+    {
+      "Name": "Turkey",
+      "ISO2": "TR",
+      "ISO3": "TUR",
+      "Phone Code": 90,
+      "Time": "Europe/Istanbul",
+      "Languages": "tr-TR,ku,diq,az,av"
+    },
+    {
+      "Name": "Turkmenistan",
+      "ISO2": "TM",
+      "ISO3": "TKM",
+      "Phone Code": 993,
+      "Time": "Asia/Ashgabat",
+      "Languages": "tk,ru,uz"
+    },
+    {
+      "Name": "Turks and Caicos Islands",
+      "ISO2": "TC",
+      "ISO3": "TCA",
+      "Phone Code": "1-649",
+      "Time": "America/Grand_Turk",
+      "Languages": "en-TC"
+    },
+    {
+      "Name": "Tuvalu",
+      "ISO2": "TV",
+      "ISO3": "TUV",
+      "Phone Code": 688,
+      "Time": "Pacific/Funafuti",
+      "Languages": "tvl,en,sm,gil"
+    },
+    {
+      "Name": "U.S. Virgin Islands",
+      "ISO2": "VI",
+      "ISO3": "VIR",
+      "Phone Code": "1-340",
+      "Time": "America/Port_of_Spain",
+      "Languages": "en-VI"
+    },
+    {
+      "Name": "Uganda",
+      "ISO2": "UG",
+      "ISO3": "UGA",
+      "Phone Code": 256,
+      "Time": "Africa/Kampala",
+      "Languages": "en-UG,lg,sw,ar"
+    },
+    {
+      "Name": "Ukraine",
+      "ISO2": "UA",
+      "ISO3": "UKR",
+      "Phone Code": 380,
+      "Time": "Europe/Kiev",
+      "Languages": "uk,ru-UA,rom,pl,hu"
+    },
+    {
+      "Name": "United Arab Emirates",
+      "ISO2": "AE",
+      "ISO3": "ARE",
+      "Phone Code": 971,
+      "Time": "Asia/Dubai",
+      "Languages": "ar-AE,fa,en,hi,ur"
+    },
+    {
+      "Name": "United Kingdom",
+      "ISO2": "GB",
+      "ISO3": "GBR",
+      "Phone Code": 44,
+      "Time": "Europe/London",
+      "Languages": "en-GB,cy-GB,gd"
+    },
+    {
+      "Name": "United States",
+      "ISO2": "US",
+      "ISO3": "USA",
+      "Phone Code": 1,
+      "Time": "America/New_York",
+      "Languages": "en-US,es-US,haw,fr"
+    },
+    {
+      "Name": "Uruguay",
+      "ISO2": "UY",
+      "ISO3": "URY",
+      "Phone Code": 598,
+      "Time": "America/Montevideo",
+      "Languages": "es-UY"
+    },
+    {
+      "Name": "Uzbekistan",
+      "ISO2": "UZ",
+      "ISO3": "UZB",
+      "Phone Code": 998,
+      "Time": "Asia/Tashkent",
+      "Languages": "uz,ru,tg"
+    },
+    {
+      "Name": "Vanuatu",
+      "ISO2": "VU",
+      "ISO3": "VUT",
+      "Phone Code": 678,
+      "Time": "Pacific/Efate",
+      "Languages": "bi,en-VU,fr-VU"
+    },
+    {
+      "Name": "Vatican",
+      "ISO2": "VA",
+      "ISO3": "VAT",
+      "Phone Code": 379,
+      "Time": "Europe/Rome",
+      "Languages": "la,it,fr"
+    },
+    {
+      "Name": "Venezuela",
+      "ISO2": "VE",
+      "ISO3": "VEN",
+      "Phone Code": 58,
+      "Time": "America/Caracas",
+      "Languages": "es-VE"
+    },
+    {
+      "Name": "Vietnam",
+      "ISO2": "VN",
+      "ISO3": "VNM",
+      "Phone Code": 84,
+      "Time": "Asia/Ho_Chi_Minh",
+      "Languages": "vi,en,fr,zh,km"
+    },
+    {
+      "Name": "Wallis and Futuna",
+      "ISO2": "WF",
+      "ISO3": "WLF",
+      "Phone Code": 681,
+      "Time": "Pacific/Wallis",
+      "Languages": "wls,fud,fr-WF"
+    },
+    {
+      "Name": "Western Sahara",
+      "ISO2": "EH",
+      "ISO3": "ESH",
+      "Phone Code": 212,
+      "Time": "Africa/El_Aaiun",
+      "Languages": "ar,mey"
+    },
+    {
+      "Name": "Yemen",
+      "ISO2": "YE",
+      "ISO3": "YEM",
+      "Phone Code": 967,
+      "Time": "Asia/Aden",
+      "Languages": "ar-YE"
+    },
+    {
+      "Name": "Zambia",
+      "ISO2": "ZM",
+      "ISO3": "ZMB",
+      "Phone Code": 260,
+      "Time": "Africa/Maputo",
+      "Languages": "en-ZM,bem,loz,lun,lue,ny,toi"
+    },
+    {
+      "Name": "Zimbabwe",
+      "ISO2": "ZW",
+      "ISO3": "ZWE",
+      "Phone Code": 263,
+      "Time": "Africa/Maputo",
+      "Languages": "en-ZW,sn,nr,nd"
+    }
+  ]

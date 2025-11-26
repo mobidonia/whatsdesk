@@ -1,0 +1,422 @@
+{
+    "alias": "wpbox",
+    "version": "1.7",
+    "hasSidebar":true,
+    "hasReports":true,
+    "reports": [
+        {
+            "name":"Open Conversations",
+            "showOnDashboard":true,
+            "view":"wpbox::reports.open_conversations.app",
+            "script":"wpbox::reports.open_conversations.script"
+        },
+        {
+            "name":"Converstion traffic",
+            "view":"wpbox::reports.conversation_traffic.app",
+            "script":"wpbox::reports.conversation_traffic.script"
+        },
+        {
+            "name":"Conversation by agent",
+            "view":"wpbox::reports.conversation_by_agent.app",
+            "script":"wpbox::reports.conversation_by_agent.script"
+        }
+        
+    ],
+    "sidebarData":[
+        {
+            "name":"Contact",
+            "app":"contact",
+            "icon":"https://mobidonia-demo.imgix.net/icons/person.svg",
+            "brandColor":"#8966FE",
+            "view":"wpbox::chat.sideappcontact.app",
+            "script":"wpbox::chat.sideappcontact.script"
+        },
+        {
+            "name":"Notes",
+            "app":"notes",
+            "brandColor":"#423B82",
+            "icon":"https://mobidonia-demo.imgix.net/icons/note.svg",
+            "view":"wpbox::chat.sideappnotes.app",
+            "script":"wpbox::chat.sideappnotes.script"
+        }
+    ],
+    "alwayson":true,
+    "description": "",
+    "beforeMainMenus":true,
+    "nameSpace": "Modules\\Wpbox",
+    "hasDashboardInfo":true,
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Wpbox\\Providers\\Main"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": [],
+    "cost_per_action":[
+        {
+            "name":"Send regular message",
+            "action":"send_regular_message",
+            "cost":1,
+            "default_cost":1
+        }
+    ],
+    "global_fields":[
+        {
+            "separator":"Chat settings",
+            "title": "Chat page size",
+            "key":"CHAT_PAGE_SIZE",
+            "ftype": "input",
+            "value": "6"
+        },
+        {
+            "separator":"One Signal",
+            "title": "One signal app id",
+            "key":"ONE_SIGNAL_APP_ID",
+            "help":"Get it from https://onesignal.com. It is used for web push notifications",
+            "ftype": "input",
+            "value": ""
+        },
+        {
+            "title": "One signal Rest API key",
+            "key":"ONE_SIGNAL_REST_API_KEY",
+            "help":"Get it from https://onesignal.com",
+            "ftype": "input",
+            "value": ""
+        },
+        {
+            "separator":"Google Maps",
+            "title": "Google Maps Key - used in campaign analytics",
+            "key":"GOOGLE_MAPS_API_KEY",
+            "ftype": "input",
+            "value": ""
+        },
+        {
+            "title": "Enable google maps on campaign details",
+            "key":"GOOGLE_MAPS_ENABLED_ON_DETAILS",
+            "ftype": "bool",
+            "value": true
+        },
+        {
+            "separator":"Landing page links",
+            "title": "Privacy Policy link",
+            "key": "PRIVACY_POLICY_URL",
+            "ftype": "input",
+            "type": "text",
+            "value":""
+        },
+        {
+            "title": "Terms of use policy link",
+            "key": "TERMS_OF_SERVICE_URL",
+            "ftype": "input",
+            "type": "text",
+            "value":""
+        },
+        {
+            "title": "Disclaimer policy link",
+            "key": "DISCLAIMER_URL",
+            "ftype": "input",
+            "type": "text",
+            "value":""
+        },
+        {
+            "separator":"Social links",
+            "title": "Facebook",
+            "key": "FACEBOOK_URL",
+            "ftype": "input",
+            "type": "text",
+            "value":"#"
+        },
+        {
+            "title": "Instagram",
+            "key": "INSTAGRAM_URL",
+            "ftype": "input",
+            "type": "text",
+            "value":"#"
+        },
+        {
+            "title": "X link",
+            "key": "X_URL",
+            "ftype": "input",
+            "type": "text",
+            "value":"#"
+        },
+        { 
+            "separator": "Sending messages settings",
+            "title": "Sending messages in background", 
+            "key": "CAMPAIGN_SENDING_TYPE", 
+            "value": "normal", 
+            "ftype": "select", 
+            "data": { "normal": "Normal", "queues": "Queues - Async sending" } 
+        },
+        { 
+            "title": "Async messages sending", 
+            "key": "QUEUE_CONNECTION", 
+            "value": "sync", 
+            "ftype": "select", 
+            "data": { "sync": "Sync - Instant send", "database": "Database - queues", "redis": "Redis - queues" } 
+        },
+        { 
+            "title": "Campaign sending batch size", 
+            "key": "CAMPAIGN_SENDING_BATCH", 
+            "ftype": "input", 
+            "value": 100 
+        },
+        { 
+            "separator": "Mobile app settings",
+            "title": "Google Play URL", 
+            "key": "MOBILE_APP_ANDROID_URL", 
+            "value": "#", 
+            "ftype": "input"
+        },
+        { 
+            "title": "AppStore URL", 
+            "key": "MOBILE_APP_IOS_URL", 
+            "value": "#", 
+            "ftype": "input"
+        }
+
+
+
+    ],
+    "vendor_fields":[
+        {
+            "separator":"WebHooks",
+            "title": "Whatsapp received data will be resend to",
+            "key":"whatsapp_data_send_webhook",
+            "ftype": "input",
+            "icon":"🔗",
+            "value": ""
+        },
+        {
+            "separator":"Chat settings",
+            "title": "Unsubscribe trigger",
+            "key":"unsubscribe_trigger",
+            "ftype": "input",
+            "value": "Stop promotions",
+            "icon":"💬"
+        },
+        {
+            "title": "Agent handover trigger",
+            "key":"agent_handover_trigger",
+            "ftype": "input",
+            "value": "Talk to a human"
+        },
+        {
+            "title": "Agent handover message",
+            "key":"agent_handover_message",
+            "ftype": "input",
+            "value": "Soon you will be connected to a human agent. Thanks for your patience."
+        },
+        {
+            "title": "Black listed phone numbers",
+            "key":"black_listed_phone_numbers",
+            "ftype": "input",
+            "value": ""
+        },
+        {
+            "separator":"Bot settings",
+            "title": "Message send when delay in response is expected",
+            "key":"delay_response",
+            "ftype": "input",
+            "value": "Give me a moment, I will have the answer shortly",
+            "icon":"🤖"
+        },
+        {
+            "separator":"Facebook Developer", 
+            "title": "👨‍💻 Facebook App ID",
+            "key":"facebook_app_id",
+            "ftype": "input",
+            "value": "",
+            "icon":"👨‍💻"
+        },
+        {
+            "title": "🔑 Facebook App Secret",
+            "key":"facebook_app_secret", 
+            "ftype": "input",
+            "help": "Enter your Facebook App Secret to enable template messaging",
+            "value": ""
+        },
+        {
+            "title": "WhatsApp Phone Number ID",
+            "key":"whatsapp_phone_number_id",
+            "ftype": "input", 
+            "help": "Enter your WhatsApp Phone Number ID from Facebook Developer Console",
+            "value": ""
+        },
+        {
+            "title": "WhatsApp Business Account ID",
+            "key":"whatsapp_business_account_id",
+            "ftype": "input",
+            "help": "Enter your WhatsApp Business Account ID from Facebook Developer Console",
+            "value": ""
+        },
+        {
+            "title": "Permanent access token",
+            "key":"whatsapp_permanent_access_token",
+            "ftype": "input",
+            "help": "Enter your permanent access token from Facebook Developer Console",
+            "value": ""
+        },
+        {
+            "separator":"Links",
+            "title": "Links tab in the chat section",
+            "key":"links_tab_in_chat_name",
+            "ftype": "input",
+            "icon":"🔗",
+            "value": "Products"
+        },
+        {
+            "title": "Show links tab",
+            "key": "show_links_tab",
+            "ftype": "bool",
+            "icon": "🔗",
+            "value": true,
+            "help": "Enable or disable the links tab in chat"
+        }
+        
+    ],
+    "staffmenus":[
+        {
+            "name":"Chat",
+            "icon":"ni ni-chat-round text-blue",
+            "route":"chat.index",
+            "color":"#2dce89"
+        },
+        {
+            "name":"Campaigns",
+            "icon":"ni ni-send text-green",
+            "route":"campaigns.index"
+        },
+        {
+            "id":"contactMenu",
+            "name":"Contacts",
+            "icon":"ni ni-circle-08 text-green",
+            "route":"contacts.index",
+            "isGroup":true,
+            "menus":[ 
+                {
+                    "name":"Contact list",
+                    "icon":"ni ni-circle-08 text-green",
+                    "route":"contacts.index"
+                },
+                {
+                    "name":"Fields",
+                    "icon":"ni ni-bullet-list-67 text-primary",
+                    "route":"contacts.fields.index"
+                },
+                {
+                    "name":"Groups",
+                    "icon":"ni ni-collection text-primary",
+                    "route":"contacts.groups.index"
+                },
+                {
+                    "name":"Import",
+                    "icon":"ni ni-cloud-download-95 text-primary",
+                    "route":"contacts.import.index"
+                }
+            ]
+        }
+    ],
+    "ownermenus":[
+        {
+            "name":"Chat",
+            "icon":"ni ni-chat-round text-blue",
+            "onlyin": "wpbox,whatssupport",
+            "route":"chat.index",
+            "color":"#2dce89",
+            "priority":1
+        },
+        {
+            "name":"Campaigns",
+            "icon":"ni ni-send text-green",
+            "route":"campaigns.index",
+            "onlyin": "wpbox",
+            "priority":1
+        },
+        {
+            "id":"contactMenu",
+            "name":"Contacts",
+            "icon":"ni ni-circle-08   text-green",
+            "route":"contacts.index",
+            "onlyin": "wpbox,whatssupport",
+            "isGroup":true,
+            "menus":[ 
+                {
+                    "name":"Contact list",
+                    "icon":"ni ni-circle-08 text-green",
+                    "route":"contacts.index"
+                },
+                {
+                    "name":"Fields",
+                    "icon":"ni ni-bullet-list-67 text-primary",
+                    "route":"contacts.fields.index"
+                },
+                {
+                    "name":"Groups",
+                    "icon":"ni ni-collection text-primary",
+                    "route":"contacts.groups.index"
+                },
+                {
+                    "name":"Import",
+                    "icon":"ni ni-cloud-download-95 text-primary",
+                    "route":"contacts.import.index"
+                }
+            ]
+        },
+        {
+            "id":"more",
+            "name":"Settings",
+            "icon":"ni ni-settings text-green",
+            "route":"api.info",
+            "isGroup":true,
+            "onlyin": "wpbox",
+            "menus":[ 
+                {
+                    "name":"Agents",
+                    "route":"agent.index",
+                    "icon":"ni ni-single-02 text-blue",
+                    "priority": 101
+                },
+                {
+                    "name":"Templates",
+                    "icon":"ni ni-single-copy-04 text-green",
+                    "route":"templates.index",
+                    "onlyin": "wpbox,whatssupport"
+                },{
+                    "name":"Triggers",
+                    "icon":"ni ni-curved-next text-green",
+                    "route":"replies.index",
+                    "onlyin": "wpbox,whatssupport"
+                },
+                {
+                    "name":"Apps settings",
+                    "icon":"ni ni-app text-green",
+                    "route":"admin.apps.company"
+                },
+                {
+                    "name":"API campaigns",
+                    "icon":"ni ni-bullet-list-67 text-primary",
+                    "route":"wpbox.api.index"
+                },
+                {
+                    "name":"Cloud API Setup",
+                    "route":"whatsapp.setup",
+                    "icon":"ni ni-settings text-blue",
+                    "priority": 101
+                },
+                {
+                    "name":"Web widget",
+                    "route":"websupportwidget.edit",
+                    "icon":"ni ni-world text-blue",
+                    "priority": 101
+                }
+            ]
+        }
+    ],
+    "actions_cost_config":{
+        "chat_message":1,
+        "chat_note":1
+    }
+}

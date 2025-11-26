@@ -1,0 +1,17 @@
+{
+    "alias": "dashboard",
+    "alwayson":true,
+    "version":"1.4",
+    "nameSpace": "Modules\\Dashboard",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "hasDashboardInfo":true,
+    "providers": [
+        "Modules\\Dashboard\\Providers\\Main"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

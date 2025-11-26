@@ -79,8 +79,6 @@ $env = [
             ['title' => 'Pusher app secret', 'key' => 'PUSHER_APP_SECRET', 'value' => ''],
             ['title' => 'Pusher app cluster', 'key' => 'PUSHER_APP_CLUSTER', 'value' => 'eu'],
             ['title' => 'Broadcast Driver', 'key' => 'BROADCAST_DRIVER', 'value' => 'log', 'ftype' => 'select', 'data' => ['pusher' => 'Pusher', 'log' => 'Log']],
-
-            ['separator' => 'Share this', 'title' => 'Share this property id', 'help' => 'You can find this number in Share this import link', 'key' => 'SHARE_THIS_PROPERTY', 'value' => ''],
         ],
     ],
     [

@@ -1,0 +1,33 @@
+{
+    "alias": "reports",
+    "description": "Reports and Analytics module for the platform",
+    "keywords": ["reports", "analytics", "statistics"],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Reports\\Providers\\Main"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": [],
+    "staffmenus": [
+        {
+            "name": "Reports",
+            "icon": "ni ni-chart-bar-32 text-primary",
+            "route": "reports.index",
+            "onlyin": "wpbox,whatssupport",
+            "color": "#2dce89",
+            "priority": 5
+        }
+    ],
+    "ownermenus": [
+        {
+            "name": "Reports",
+            "icon": "ni ni-chart-bar-32 text-primary", 
+            "route": "reports.index",
+            "onlyin": "wpbox,whatssupport",
+            "color": "#2dce89",
+            "priority": 5
+        }
+    ]
+}
