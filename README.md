@@ -1,4 +1,4 @@
-# WhatsDesk -  open-source WhatsApp marketing and automation platform
+# WhatsDesk -  WhatsApp marketing and automation platform
 
 <p align="center">
   <img src="https://whatsdesk.mobidonia.com/default/wpbox/herocalls.png" alt="WhatsDesk Banner" style="max-width: 100%; height: auto;">
@@ -7,6 +7,7 @@
 ## 🖥️ Live Demo
 
 You can try out WhatsDesk online here: [Live Demo](https://whatsbox.mobidonia.com/).
+
 Not that landing page and the SaaS functions are not part of this repo. 
 
 
@@ -18,8 +19,9 @@ This repository is the **community (open-source) edition** of [WhatsBox](https:/
 ## ✨ Features Included in Open Source Version
 
 - ✅ WhatsApp Cloud API Integration  
-- ✅ Contact Management  
 - ✅ Message Sending (Text, Media, Templates)  
+- ✅ WhatsApp Calls
+- ✅ Contact Management  
 - ✅ Basic Campaign Management  
 - ✅ Webhook Handling  
 - ✅ Multi-user Support  
