@@ -5,7 +5,7 @@ return
     'landing_page' => env('LANDING_PAGE', ''),
     'company_page' => env('COMPANY_PAGE', ''),
     'logo' => env('LOGO_URL', '/default/logo.png'),
-    'front_languages' => env('FRONT_LANGUAGES', 'EN,English,IT,Italian,FR,French,DE,German,ES,Spanish,RU,Russian,PT,Portuguese,TR,Turkish,ar,Arabic'),
+    'front_languages' => env('FRONT_LANGUAGES', 'EN,English'),
     'landing_page_functions' => env('LANDING_PAGE_FUNCTIONS', 'feature'),
     'landing_page_titles' => env('LANDING_PAGE_TITLES', 'Features'),
     'app_locale' => env('APP_LOCALE', 'EN'),
