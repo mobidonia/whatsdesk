@@ -1,4 +1,4 @@
-# WhatsDesk
+# WhatsDesk -  open-source WhatsApp marketing and automation platform
 
 <p align="center">
   <img src="https://whatsdesk.mobidonia.com/default/wpbox/herocalls.png" alt="WhatsDesk Banner" style="max-width: 100%; height: auto;">
