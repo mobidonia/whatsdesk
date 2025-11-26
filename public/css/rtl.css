@@ -1,0 +1,19 @@
+body {
+    direction : rtl;
+    text-align : right;
+    }
+
+.right-0
+{
+    left: 0 !important;
+    right:auto !important;
+}
+
+.oblique {
+    transform: skewX(-10deg) !important;
+    overflow: hidden;
+    width: 60% ;
+    left: -10rem !important;
+    right: auto !important;
+    border-bottom-right-radius: 0.75rem !important;
+}

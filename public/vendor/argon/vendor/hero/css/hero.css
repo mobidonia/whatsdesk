@@ -1,0 +1,894 @@
+/*--------------------------------
+
+hermes-dashboard-icons Web Font - built using nucleoapp.com
+License - nucleoapp.com/license/
+
+-------------------------------- */
+
+  /*------------------------
+      base class definition
+  -------------------------*/
+  .ni {
+    display: inline-block;
+    font: normal normal normal 14px/1 NucleoIcons;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  /*------------------------
+    change icon size
+  -------------------------*/
+
+  .ni-lg {
+    font-size: 1.33333333em;
+    line-height: 0.75em;
+    vertical-align: -15%;
+  }
+  .ni-2x {
+    font-size: 2em;
+  }
+  .ni-3x {
+    font-size: 3em;
+  }
+  .ni-4x {
+    font-size: 4em;
+  }
+  .ni-5x {
+    font-size: 5em;
+  }
+  
+  /*----------------------------------
+    add a square/circle background
+  -----------------------------------*/
+  .ni.square,
+  .ni.circle {
+    padding: 0.33333333em;
+    vertical-align: -16%;
+    background-color: #eee;
+  }
+  .ni.circle {
+    border-radius: 50%;
+  }
+  /*------------------------
+    list icons
+  -------------------------*/
+  .ni-ul {
+    padding-left: 0;
+    margin-left: 2.14285714em;
+    list-style-type: none;
+  }
+  .ni-ul > li {
+    position: relative;
+  }
+  .ni-ul > li > .ni {
+    position: absolute;
+    left: -1.57142857em;
+    top: 0.14285714em;
+    text-align: center;
+  }
+  .ni-ul > li > .ni.lg {
+    top: 0;
+    left: -1.35714286em;
+  }
+  .ni-ul > li > .ni.circle,
+  .ni-ul > li > .ni.square {
+    top: -0.19047619em;
+    left: -1.9047619em;
+  }
+  /*------------------------
+    spinning icons
+  -------------------------*/
+  .ni.spin {
+    -webkit-animation: nc-spin 2s infinite linear;
+    -moz-animation: nc-spin 2s infinite linear;
+    animation: nc-spin 2s infinite linear;
+  }
+  @-webkit-keyframes nc-spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+  @-moz-keyframes nc-spin {
+    0% {
+      -moz-transform: rotate(0deg);
+    }
+    100% {
+      -moz-transform: rotate(360deg);
+    }
+  }
+  @keyframes nc-spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  /*------------------------
+    rotated/flipped icons
+  -------------------------*/
+  .ni.rotate-90 {
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+  }
+  .ni.rotate-180 {
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+  .ni.rotate-270 {
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    transform: rotate(270deg);
+  }
+  .ni.flip-y {
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
+    -webkit-transform: scale(-1, 1);
+    -moz-transform: scale(-1, 1);
+    -ms-transform: scale(-1, 1);
+    -o-transform: scale(-1, 1);
+    transform: scale(-1, 1);
+  }
+  .ni.flip-x {
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+    -webkit-transform: scale(1, -1);
+    -moz-transform: scale(1, -1);
+    -ms-transform: scale(1, -1);
+    -o-transform: scale(1, -1);
+    transform: scale(1, -1);
+  }
+  /*------------------------
+      font icons
+  -------------------------*/
+
+  .ni-tv-2 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/tv.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-active-40 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/check-circle.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-air-baloon {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/rocket-launch.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-album-2 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/photo.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-align-center {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/bars-3-center-left.svg');
+    height: 24px;
+    width: 24px;
+  }
+
+  
+
+  .ni-shop {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/building-storefront.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-align-left-2 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/bars-3.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-ambulance {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/truck.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-app {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/squares-2x2.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-archive-2 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/archive-box.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-atom {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/bolt.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-badge {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/check-badge.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-bag-17 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/shopping-bag.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-basket {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/shopping-cart.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-bell-55 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/bell.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-bold-down {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/arrow-down.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-bold-left {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/arrow-left.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-bold-right {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/arrow-right.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-bold-up {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/arrow-up.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-bold {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/bold.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-book-bookmark {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/bookmark.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-books {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/book-open.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-box-2 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/archive-box.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-briefcase-24 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/briefcase.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-building {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/building-office.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-bulb-61 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/light-bulb.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-bullet-list-67 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/list-bullet.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-bus-front-12 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/truck.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-button-pause {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/pause.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-button-play {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/play.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-button-power {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/power.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-calendar-grid-58 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/calendar.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-camera-compact {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/camera.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-caps-small {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/academic-cap.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-cart {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/shopping-cart.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-chart-bar-32 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/chart-bar.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-chart-pie-35 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/chart-pie.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-chat-round {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/chat-bubble-oval-left.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-check-bold {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/check.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-circle-08 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/user-circle.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-cloud-download-95 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/cloud-arrow-down.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-cloud-upload-96 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/cloud-arrow-up.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-compass-04 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/map.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-controller {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/play.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-credit-card {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/credit-card.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-curved-next {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/arrow-right.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-delivery-fast {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/truck.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-diamond {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/sparkles.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-email-83 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/envelope.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-fat-add {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/plus-circle.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-fat-delete {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/x-circle.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-fat-remove {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/minus-circle.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-favourite-28 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/heart.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-folder-17 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/folder.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-glasses-2 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/eye.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-hat-3 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/academic-cap.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-headphones {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/speaker-wave.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-html5 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/code-bracket.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-istanbul {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/building-office.svg');
+    height: 24px;
+    width: 24px;
+  }
+
+  .ni-image {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/photo.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-key-25 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/key.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-laptop {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/computer-desktop.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  
+  
+  .ni-lock-circle-open {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/lock-open.svg');
+    height: 24px;
+    width: 24px;
+  }
+
+  
+  
+  .ni-money-coins {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/banknotes.svg');
+    height: 24px;
+    width: 24px;
+  }
+
+  .ni-like-2 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/hand-thumb-up.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-map-big {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/map.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-mobile-button {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/device-phone-mobile.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-note-03 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/document.svg');
+    height: 24px;
+    width: 24px;
+  }
+
+  .ni-pin-3 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/map-pin.svg');
+    height: 24px;
+    width: 24px;
+  }
+
+  .ni-planet {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/globe-alt.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-notification-70 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/bell-alert.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-palette {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/swatch.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-paper-diploma {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/academic-cap.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+ 
+  
+  .ni-ruler-pencil {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/pencil.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-satisfied::before {
+      content: "\ea49";
+  }
+  
+  .ni-scissors {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/scissors.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-send {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/paper-airplane.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-settings-gear-65 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/cog-8-tooth.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  
+  
+  .ni-single-copy-04 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/document.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  
+
+.ni-single-02 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/user.svg');
+    height: 24px;
+    width: 24px;
+}
+
+.ni-world-2 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/globe-alt.svg');
+    height: 24px;
+    width: 24px;
+}
+
+
+.ni-sound-wave {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/speaker-wave.svg');
+    height: 24px;
+    width: 24px;
+}
+
+.ni-settings {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/cog-8-tooth.svg');
+    height: 24px;
+    width: 24px;
+}
+
+.ni-square-pin {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/map-pin.svg');
+    height: 24px;
+    width: 24px;
+}
+
+.ni-support-16 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/lifebuoy.svg');
+    height: 24px;
+    width: 24px;
+}
+
+
+  
+  .ni-spaceship {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/rocket-launch.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  
+  
+  
+  
+  .ni-tablet-button {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/device-tablet.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+ 
+  
+  .ni-trophy {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/trophy.svg');
+    height: 24px;
+    width: 24px;
+  }
+  
+  .ni-tag {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/tag.svg');
+    height: 24px;
+    width: 24px;
+  }
+
+  .ni-tie-bow {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/academic-cap.svg');
+    height: 24px;
+    width: 24px;
+  }
+
+  .ni-time-alarm {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/clock.svg');
+    height: 24px;
+    width: 24px;
+  }
+
+  .ni-umbrella-13 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/shield-check.svg');
+    height: 24px;
+    width: 24px;
+  }
+
+  .ni-user-run {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/user.svg');
+    height: 24px;
+    width: 24px;
+  }
+
+  .ni-vector {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/pencil.svg');
+    height: 24px;
+    width: 24px;
+  }
+
+  .ni-watch-time {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/clock.svg');
+    height: 24px;
+    width: 24px;
+  }
+
+  .ni-world {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/globe-alt.svg');
+    height: 24px;
+    width: 24px;
+  }
+
+  .ni-zoom-split-in {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/magnifying-glass-plus.svg');
+    height: 24px;
+    width: 24px;
+  }
+
+  .ni-collection {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/rectangle-stack.svg');
+    height: 24px;
+    width: 24px;
+  }
+
+  .ni-ungroup {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/squares-2x2.svg');
+    height: 24px;
+    width: 24px;
+  }
+
+  .ni-ui-04 {
+    background-repeat: no-repeat;
+    background-image: url('../svg/hero/outline/squares-plus.svg');
+    height: 24px;
+    width: 24px;
+  }
+
+  
+  button .ni {
+    -webkit-mask-image: var(--ni-bg-image, inherit);
+    mask-image: var(--ni-bg-image, inherit);
+    height: 0px;
+    width: 0px;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    color: currentColor;
+    background-image: none;
+  }

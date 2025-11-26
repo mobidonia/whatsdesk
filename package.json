@@ -1,0 +1,65 @@
+{ 
+    "private": true,
+    "scripts": {
+        "ngrok": "./ngrok http --host-header=rewrite puresaasnew.test:443",
+        "dev": "vite",
+        "build": "vite build",
+        "updatedif": "git diff --name-only 396dbbd2068a61a658222f1a3c079dddeda0dcf0 > .diff-files.txt",
+        "todev": "cp .envs/.env_dev .env",
+        "zipupdate": "cat .diff-files.txt | zip -@ UPDATE/version_update.zip",
+        "createupdatefolder": "rm -rf UPDATE && mkdir -p UPDATE/modules",
+        "removeupdatefolder": "rm -rf UPDATE",
+        "zippaymentmodules": "zip -r paymentmodules.zip modules/PaddlebillingSubscribe/* modules/PaddleSubscribe/* modules/Razorpay/* modules/RazorpaySubscribe/* modules/PaypalSubscribe/* modules/PaystackSubscribe/*",
+        "zipgeneral": "zip -r general.zip ./  -x \"database/schema/*\" -x \"post_deploy/*\" -x \".dev/*\" -x \"storage/app/laravel-settings/*\" -x \"storage/app/storage/app/livewire-tmp/*\" -x \"storage/framework/sessions/*\" -x \"storage/logs/*\" -x \"node_modules/*\" -x \"modules/*\" -x \".env*\" -x \".envs\" -x \"ngrok\" -x \"*.git*\" -x \"*.zip\" -x \"*.DS_Store\"  -x \"storage/debugbar/*\" -x \"storage/framework/cache/data/*\" -x \"storage/framework/views/*\"  -x \"storage/framework/cache/laravel-excel/*\" -x \"public/default/*\"   -x \"public/uploads/media/*\" -x \"lang/en/*\" -x \"storage/logs/*\" -x \"storage/installed\" -x \"storage/verified\"  -x \"public/uploads/companies/*\" -x \"public/uploads/settings/*\" -x \"bootstrap/cache/*\"   && zip -r general.zip storage/framework/cache/data/.gitignore storage/framework/views/.gitignore bootstrap/cache/.gitignore storage/logs/.gitignore public/uploads/companies/.dev public/uploads/settings/.dev  storage/framework/sessions/.gitignore lang/en/auth.php lang/en/crud.php lang/en/general.php  lang/en/passwords.php lang/en/pagination.php lang/en/validation.php  public/default/logo.png public/default/bg.jpg public/uploads/media/index.html",
+        "addenvtogeneral": "zip -r general.zip .env ",
+        "addqrpdf": "zip -r qr_pdf.zip lang/en/qrlanding.php public/default/menupdf/* modules/Dashboard/*  modules/Impressum/*  modules/Menupdf/* modules/Qrcodemaker/* modules/Socialplatforms/*",
+        "zipqrpdf": "npm run zipgeneral && cp .envs/.env_qrpdf .env && npm run addenvtogeneral && mv general.zip qr_pdf.zip && npm run addqrpdf",
+        "addpp": "zip -r pp.zip lang/en/ppgen.php public/default/privacygen/* modules/Dashboard/*  modules/Privacygen/*  modules/Privacypolicytemplate/* modules/Refundtemplate/* modules/Ccpa/*  modules/Terms/* modules/StripeCheckout/*",
+        "zippp": "npm run zipgeneral && cp .envs/.env_pp .env && npm run addenvtogeneral && mv general.zip pp.zip && npm run addpp",
+        "addavatar": "zip -r avatar.zip lang/en/avatar.php public/default/avatar/* modules/Dashboard/*  modules/Avatar/*  modules/StripeCheckout/*",
+        "zipavatar": "npm run zipgeneral && cp .envs/.env_avatar .env && npm run addenvtogeneral && mv general.zip avatar.zip && npm run addavatar",
+        "addloyalty": "zip -r loyalty.zip lang/en/loyalty.php public/default/loyalty/hero.png modules/Dashboard/*  modules/Cards/*  modules/Coupons/*  modules/Feautureclients/*",
+        "ziployalty": "npm run zipgeneral && cp .envs/.env_loyalty .env && npm run addenvtogeneral && mv general.zip loyalty.zip && npm run addloyalty",
+        "zipall": "npm run zip zipqrpdf && npm run zip zippp && npm run zip ziployalty && npm run zip zipwpbox && npm run todev",
+        "addwpbox": "zip -r wpbox.zip lang/en/wpbox.php lang/en/wpsupport.php public/default/wpbox/* modules/Dashboard/* modules/Agents/* modules/Themes/*  modules/Contacts/*  modules/Wpbox/* modules/Wpboxlanding/* modules/StripehSubscribe/* modules/Wpsupportlanding/* modules/Pricing/* modules/Reports/*",
+        "wpboxupdate": "npm run createupdatefolder && npm run zipupdate && cd modules  && zip -r ../UPDATE/modules/Wpbox.zip Wpbox/* & zip -r ../UPDATE/modules/Wpsupportlanding.zip Wpsupportlanding/* & zip -r ../UPDATE/modules/Reports.zip Reports/* && zip -r ../UPDATE/modules/Pricing.zip Pricing/* && zip -r ../UPDATE/modules/Wpboxlanding.zip Wpboxlanding/* && zip -r ../UPDATE/modules/Agents.zip Agents/* && zip -r ../UPDATE/modules/Themes.zip Themes/*  && zip -r ../UPDATE/modules/Contacts.zip Contacts/* && zip -r ../UPDATE/modules/Dashboard.zip Dashboard/* && zip -r ../UPDATE/modules/StripehSubscribe.zip StripehSubscribe/* && cd .. && zip -r wpbox.zip UPDATE/* && npm run removeupdatefolder",
+        "zipwpbox": "npm run zipgeneral && cp .envs/.env_wpbox .env && npm run addenvtogeneral && mv general.zip wpbox.zip && npm run addwpbox && npm run wpboxupdate",
+       
+        "addwhatsdeks": "zip -r whatsdesk.zip lang/en/wpsupport.php public/default/wpbox/* modules/Pricing/* modules/Dashboard/* modules/Agents/* modules/Themes/*  modules/Contacts/*  modules/Wpbox/* modules/Wpsupportlanding/* modules/StripehSubscribe/* modules/Whatsappcall/* modules/Reports/* modules/Knowledge/* modules/Flowmaker/*  modules/Websupportwidget/* modules/Pricing/*",
+        "whatsdeskupdate": "npm run createupdatefolder && npm run zipupdate && cd modules  && zip -r ../UPDATE/modules/Pricing.zip Pricing/*  && zip -r ../UPDATE/modules/Wpbox.zip Wpbox/*  && zip -r ../UPDATE/modules/Wpboxlanding.zip Wpboxlanding/* && zip -r ../UPDATE/modules/Agents.zip Agents/* && zip -r ../UPDATE/modules/Themes.zip Themes/*  && zip -r ../UPDATE/modules/Contacts.zip Contacts/* && zip -r ../UPDATE/modules/Dashboard.zip Dashboard/* && zip -r ../UPDATE/modules/StripehSubscribe.zip StripehSubscribe/* && cd .. && zip -r wpbox.zip UPDATE/* && npm run removeupdatefolder",
+        "zipwhatsdesk": "npm run zipgeneral && cp .envs/.env_wpsup .env && npm run addenvtogeneral && mv general.zip whatsdesk.zip && npm run addwhatsdeks",
+       
+
+        "addwpboxos": "zip -r wpboxos.zip lang/en/wpbox.php public/default/wpbox/* modules/Dashboard/* modules/Agents/* modules/Themes/*  modules/Contacts/*  modules/Wpbox/* modules/Wpboxlanding/* modules/StripehSubscribe/*",
+        "wpboxupdateos": "npm run createupdatefolder && npm run zipupdate && cd modules  && zip -r ../UPDATE/modules/Wpbox.zip Wpbox/*  && zip -r ../UPDATE/modules/Wpboxlanding.zip Wpboxlanding/* && zip -r ../UPDATE/modules/Agents.zip Agents/* && zip -r ../UPDATE/modules/Themes.zip Themes/*  && zip -r ../UPDATE/modules/Contacts.zip Contacts/* && zip -r ../UPDATE/modules/Dashboard.zip Dashboard/* && zip -r ../UPDATE/modules/StripehSubscribe.zip StripehSubscribe/* && cd .. && zip -r wpboxos.zip UPDATE/* && npm run removeupdatefolder",
+        "zipwpboxos": "npm run zipgeneral && cp .envs/.env_wpbox .env && npm run addenvtogeneral && mv general.zip wpboxos.zip && npm run addwpboxos && npm run wpboxupdateos && mv wpboxos.zip ../whatsdesk/os.zip",
+
+
+
+
+
+
+
+       
+
+        "addtablereservations": "zip -r tablereservations.zip lang/en/reservationslanding.php public/default/reservations/* modules/Dashboard/* modules/Agents/*  modules/Contacts/*  modules/Tablereservations/* modules/Tablereslandingalt/* modules/Floorplan/* modules/Twilonotify/* modules/Whatsappnotify/* modules/Webreswidget/*",
+        "tablereservationsupdate": "npm run createupdatefolder && npm run zipupdate && cd modules && zip -r ../UPDATE/modules/Tablereservations.zip Tablereservations/* && zip -r ../UPDATE/modules/Tablereslandingalt.zip Tablereslandingalt/* && zip -r ../UPDATE/modules/Floorplan.zip Floorplan/*  && zip -r ../UPDATE/modules/Twilonotify.zip Twilonotify/*  && zip -r ../UPDATE/modules/Webreswidget.zip Webreswidget/*  && zip -r ../UPDATE/modules/Whatsappnotify.zip Whatsappnotify/*  && zip -r ../UPDATE/modules/Agents.zip Agents/* && zip -r ../UPDATE/modules/Contacts.zip Contacts/* && zip -r ../UPDATE/modules/Dashboard.zip Dashboard/* && cd .. && zip -r tablereservations.zip UPDATE/* && npm run removeupdatefolder",
+        "ziptablereservations": "npm run zipgeneral && cp .envs/.env_rese .env && npm run addenvtogeneral && mv general.zip tablereservations.zip && npm run addtablereservations && npm run tablereservationsupdate"
+    },
+    "devDependencies": {
+        "@alpinejs/focus": "^3.10.5",
+        "@tailwindcss/forms": "^0.5.2",
+        "@tailwindcss/typography": "^0.5.0",
+        "alpinejs": "^3.0.6",
+        "autoprefixer": "^10.4.7",
+        "axios": "^1.1.2",
+        "flowbite": "^1.6.4",
+        "laravel-echo": "^1.15.0",
+        "laravel-vite-plugin": "^0.8.0",
+        "lodash": "^4.17.19",
+        "postcss": "^8.4.14",
+        "pusher-js": "^8.0.1",
+        "tailwindcss": "^3.1.0",
+        "vite": "^4.1.4"
+    }
+}
