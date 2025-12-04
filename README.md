@@ -4,7 +4,7 @@
   <img src="https://whatsdesk.mobidonia.com/default/wpbox/herocalls.png" alt="WhatsDesk Banner" style="max-width: 100%; height: auto;">
 </p>
 
-## 🖥️ Live Demo
+## 🖥️ Live Demos
 
 You can try out WhatsDesk online here: [Live Demo](https://whatsbox.mobidonia.com/).
 
