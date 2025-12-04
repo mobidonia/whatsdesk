@@ -1,62 +1,129 @@
-version: '3'
+version: "3.8"
 services:
-    laravel.test:
-        build:
-            context: ./vendor/laravel/sail/runtimes/8.2
-            dockerfile: Dockerfile
-            args:
-                WWWGROUP: '${WWWGROUP}'
-        image: sail-8.2/app
-        extra_hosts:
-            - 'host.docker.internal:host-gateway'
-        ports:
-            - '${APP_PORT:-80}:80'
-            - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
-        environment:
-            WWWUSER: '${WWWUSER}'
-            LARAVEL_SAIL: 1
-            XDEBUG_MODE: '${SAIL_XDEBUG_MODE:-off}'
-            XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
-        volumes:
-            - '.:/var/www/html'
-        networks:
-            - sail
-        depends_on:
-            - mysql
-    mysql:
-        image: 'mysql/mysql-server:8.0'
-        ports:
-            - '${FORWARD_DB_PORT:-3306}:3306'
-        environment:
-            MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
-            MYSQL_ROOT_HOST: '%'
-            MYSQL_DATABASE: '${DB_DATABASE}'
-            MYSQL_USER: '${DB_USERNAME}'
-            MYSQL_PASSWORD: '${DB_PASSWORD}'
-            MYSQL_ALLOW_EMPTY_PASSWORD: 1
-        volumes:
-            - 'sail-mysql:/var/lib/mysql'
-            - './vendor/laravel/sail/database/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
-        networks:
-            - sail
-        healthcheck:
-            test:
-                - CMD
-                - mysqladmin
-                - ping
-                - '-p${DB_PASSWORD}'
-            retries: 3
-            timeout: 5s
-    mailhog:
-        image: 'mailhog/mailhog:latest'
-        ports:
-            - 1025:1025
-            - 8025:8025
-        networks:
-            - sail
+  # The Main Application (PHP-FPM)
+  app:
+    build:
+      context: .
+      args:
+        user: laravel
+        uid: 1000
+    image: mobidonia/whatsdesk:latest
+    container_name: whatsdesk-app
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    environment:
+      - DB_HOST=${DB_HOST:-db}
+      - DB_PORT=${DB_PORT:-3306}
+      - DB_USERNAME=${DB_USERNAME:-laravel}
+      - DB_PASSWORD=${DB_PASSWORD:-root}
+      - DB_DATABASE=${DB_DATABASE:-laravel}
+    networks:
+      - laravel
+    healthcheck:
+      test: ["CMD-SHELL", "php -r 'exit(0);' || exit(1)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # The Web Server (Nginx)
+  nginx:
+    image: nginx:alpine
+    container_name: whatsdesk-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+    depends_on:
+      app:
+        condition: service_healthy
+      reverb:
+        condition: service_started
+    networks:
+      - laravel
+
+  # The Database
+  db:
+    image: mysql:8.0
+    container_name: whatsdesk-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE:-laravel}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-root}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-root}
+      MYSQL_USER: ${DB_USERNAME:-laravel}
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - laravel
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Laravel Reverb (Websockets)
+  reverb:
+    image: mobidonia/whatsdesk:latest
+    container_name: whatsdesk-reverb
+    restart: unless-stopped
+    working_dir: /var/www
+    # Ensure Reverb listens on 0.0.0.0 so Nginx can proxy to it
+    command: php artisan reverb:start --host="0.0.0.0" --port=8080
+    volumes:
+      - ./:/var/www
+    environment:
+      - DB_HOST=${DB_HOST:-db}
+      - DB_PORT=${DB_PORT:-3306}
+      - DB_USERNAME=${DB_USERNAME:-laravel}
+      - DB_PASSWORD=${DB_PASSWORD:-root}
+      - DB_DATABASE=${DB_DATABASE:-laravel}
+      # Reverb Configuration
+      - REVERB_APP_ID=${REVERB_APP_ID:-whatsdesk}
+      - REVERB_APP_KEY=${REVERB_APP_KEY:-whatsdesk-key}
+      - REVERB_APP_SECRET=${REVERB_APP_SECRET:-whatsdesk-secret}
+      - REVERB_HOST=${REVERB_HOST:-0.0.0.0}
+      - REVERB_PORT=${REVERB_PORT:-8080}
+      - REVERB_SCHEME=${REVERB_SCHEME:-http}
+    depends_on:
+      db:
+        condition: service_healthy
+      app:
+        condition: service_started
+    networks:
+      - laravel
+
+  # Queue Worker (Optional but recommended)
+  queue:
+    image: mobidonia/whatsdesk:latest
+    container_name: whatsdesk-queue
+    restart: unless-stopped
+    working_dir: /var/www
+    command: php artisan queue:work --sleep=3 --tries=3 --max-time=3600
+    volumes:
+      - ./:/var/www
+    environment:
+      - DB_HOST=${DB_HOST:-db}
+      - DB_PORT=${DB_PORT:-3306}
+      - DB_USERNAME=${DB_USERNAME:-laravel}
+      - DB_PASSWORD=${DB_PASSWORD:-root}
+      - DB_DATABASE=${DB_DATABASE:-laravel}
+    depends_on:
+      db:
+        condition: service_healthy
+      app:
+        condition: service_started
+    networks:
+      - laravel
+
 networks:
-    sail:
-        driver: bridge
+  laravel:
+    driver: bridge
+
 volumes:
-    sail-mysql:
-        driver: local
+  dbdata:
+    driver: local

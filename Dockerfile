@@ -1,8 +1,11 @@
 FROM php:8.2-fpm
 
-# Install system dependencies and PHP extensions, you can add nodejs and npm
+# Arguments defined in docker-compose.yml
+ARG user
+ARG uid
+
+# Install system dependencies and PHP extensions
 RUN apt-get update && apt-get install -y \
-    nginx \
     libexif-dev \
     default-mysql-client \
     postgresql-client \
@@ -23,49 +26,35 @@ RUN apt-get update && apt-get install -y \
     libjpeg-dev \
     libicu-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install exif \
-    && docker-php-ext-install -j$(nproc) pdo pdo_mysql pdo_pgsql zip mbstring bcmath gd intl \
+    && docker-php-ext-install -j$(nproc) pdo pdo_mysql pdo_pgsql zip mbstring bcmath gd intl exif pcntl \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# Get latest Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Remove default nginx page and configs to avoid conflicts
-RUN rm -f /var/www/html/index.nginx-debian.html \
-    && rm -f /etc/nginx/sites-enabled/default \
-    && rm -f /etc/nginx/sites-available/default
-
-# Install Composer
-COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
-
-# Configure nginx
-COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
-
-# Copy supervisord config
-COPY ./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+# Create system user to run Composer and Artisan Commands
+RUN useradd -G www-data,root -u $uid -d /home/$user $user || true
+RUN mkdir -p /home/$user/.composer && \
+    chown -R $user:$user /home/$user
 
 # Set working directory
 WORKDIR /var/www
 
-# Copy app files
-COPY . .
+# Copy custom entrypoint
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
-RUN chmod +x /var/www/post_deploy/post_deploy_wpbox_free.sh
-RUN chmod +x /var/www/post_deploy/post_deploy_loyalty.sh
-RUN chmod +x /var/www/post_deploy/post_deploy_whatsdesk.sh
+# Set proper permissions for Laravel directories (run as root, then switch)
+RUN mkdir -p /var/www/storage/framework/{sessions,views,cache} \
+    && mkdir -p /var/www/storage/logs \
+    && mkdir -p /var/www/bootstrap/cache \
+    && chown -R www-data:www-data /var/www/storage \
+    && chown -R www-data:www-data /var/www/bootstrap/cache \
+    && chmod -R 775 /var/www/storage \
+    && chmod -R 775 /var/www/bootstrap/cache
 
-# Fix Laravel folder permissions
-RUN mkdir -p storage/framework/cache/data \
-    && mkdir -p storage/framework/sessions \
-    && mkdir -p storage/framework/views \
-    && mkdir -p storage/logs \
-    && chmod -R 775 storage bootstrap/cache \
-    && chmod -R 775 public/uploads \
-    && chown -R www-data:www-data storage bootstrap/cache /var/www
+# PHP-FPM needs to run as root to bind to port 9000, but will switch to www-data for requests
+# For artisan commands, we'll switch to the user in the entrypoint
+ENTRYPOINT ["docker-entrypoint.sh"]
+CMD ["php-fpm"]
 
-# Declare persistent paths
-VOLUME ["/var/www/storage/app","/var/www/public/uploads"]
-
-# Expose HTTP port
-EXPOSE 80 443
-
-# Start supervisord
-CMD ["/usr/bin/supervisord", "-n"]

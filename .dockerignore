@@ -1,0 +1,56 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+docker-entrypoint.sh
+
+# Documentation
+README.md
+*.md
+
+# IDE
+.idea
+.vscode
+.cursor
+*.swp
+*.swo
+*~
+
+# Node
+node_modules
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Laravel
+/vendor
+/storage/*.key
+/storage/framework/sessions/*
+/storage/framework/views/*
+/storage/framework/cache/*
+/storage/logs/*
+/bootstrap/cache/*
+/public/hot
+/public/storage
+.env
+.env.*
+!.env.example
+
+# Testing
+.phpunit.result.cache
+/coverage
+
+# Build artifacts
+/public/build
+/public/mix-manifest.json
+
+# OS
+.DS_Store
+Thumbs.db
+
