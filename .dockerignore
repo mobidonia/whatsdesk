@@ -7,7 +7,7 @@
 Dockerfile
 docker-compose.yml
 .dockerignore
-docker-entrypoint.sh
+# Note: docker-entrypoint.sh is needed for the build, so don't exclude it
 
 # Documentation
 README.md

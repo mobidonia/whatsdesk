@@ -3,6 +3,7 @@
 # Exit on fail
 set -e
 
+
 # Get database connection details
 DB_HOST=${DB_HOST:-db}
 DB_PORT=${DB_PORT:-3306}
