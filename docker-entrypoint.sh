@@ -9,6 +9,20 @@ cd /var/www || {
     exit 1
 }
 
+# Check if application code exists
+if [ ! -f "composer.json" ] && [ ! -f "artisan" ]; then
+    echo "WARNING: Application code not found in /var/www"
+    echo "This usually means the volume mount failed in Coolify."
+    echo "Checking directory contents:"
+    ls -la /var/www/ | head -20
+    echo ""
+    echo "If you see this error, either:"
+    echo "1. Check Coolify volume mounting settings"
+    echo "2. Rebuild the Docker image WITH code included (modify Dockerfile to COPY . /var/www)"
+    echo ""
+    # Don't exit - let PHP-FPM start anyway so healthcheck can pass
+fi
+
 # Get database connection details
 DB_HOST=${DB_HOST:-db}
 DB_PORT=${DB_PORT:-3306}

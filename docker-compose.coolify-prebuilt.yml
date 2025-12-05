@@ -36,8 +36,9 @@ services:
     image: nginx:alpine
     restart: unless-stopped
     volumes:
-      # Mount repository code for static files and nginx configs
+      # Mount repository code for static files
       - ./:/var/www
+      # Mount nginx configs
       - ./docker/nginx/conf.d/:/etc/nginx/conf.d/:ro
     expose:
       - "80"
@@ -61,7 +62,9 @@ services:
     volumes:
       - dbdata:/var/lib/mysql
     healthcheck:
-      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u root -p${MYSQL_ROOT_PASSWORD} || exit 1"]
+      # Simple healthcheck - mysqladmin ping with password from environment
+      # MariaDB containers have MYSQL_ROOT_PASSWORD set, use it directly
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u root -p${MYSQL_ROOT_PASSWORD:-root} || exit 1"]
       interval: 10s
       timeout: 5s
       retries: 5
