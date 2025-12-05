@@ -65,8 +65,11 @@ echo "Setting up permissions..."
 mkdir -p storage/framework/{sessions,views,cache}
 mkdir -p storage/logs
 mkdir -p bootstrap/cache
+# Ensure cache directories are writable
 chown -R www-data:www-data storage bootstrap/cache 2>/dev/null || true
 chmod -R 775 storage bootstrap/cache 2>/dev/null || true
+# Make sure cache files can be created
+touch bootstrap/cache/.gitkeep storage/framework/cache/.gitkeep 2>/dev/null || true
 
 # Install dependencies if vendor missing (useful for dev/first run or if code is mounted)
 # Note: If code is baked into the image, dependencies should already be installed during build
@@ -85,7 +88,39 @@ if [ ! -f ".env" ]; then
     if [ -f ".env.example" ]; then
         cp .env.example .env
     else
-        echo "Warning: .env.example not found. Please create .env manually."
+        echo "Creating minimal .env file from environment variables..."
+        # Create a minimal .env file with essential settings
+        cat > .env <<EOF
+APP_NAME=Laravel
+APP_ENV=${APP_ENV:-production}
+APP_KEY=
+APP_DEBUG=${APP_DEBUG:-false}
+APP_URL=${APP_URL:-http://localhost}
+
+LOG_CHANNEL=stack
+LOG_LEVEL=debug
+
+DB_CONNECTION=mysql
+DB_HOST=${DB_HOST:-db}
+DB_PORT=${DB_PORT:-3306}
+DB_DATABASE=${DB_DATABASE:-laravel}
+DB_USERNAME=${DB_USERNAME:-laravel}
+DB_PASSWORD=${DB_PASSWORD:-root}
+
+BROADCAST_DRIVER=reverb
+CACHE_DRIVER=file
+FILESYSTEM_DISK=local
+QUEUE_CONNECTION=database
+SESSION_DRIVER=file
+SESSION_LIFETIME=120
+
+REVERB_APP_ID=${REVERB_APP_ID:-whatsdesk}
+REVERB_APP_KEY=${REVERB_APP_KEY:-whatsdesk-key}
+REVERB_APP_SECRET=${REVERB_APP_SECRET:-whatsdesk-secret}
+REVERB_HOST=${REVERB_HOST:-0.0.0.0}
+REVERB_PORT=${REVERB_PORT:-8080}
+REVERB_SCHEME=${REVERB_SCHEME:-https}
+EOF
     fi
 fi
 
@@ -112,6 +147,12 @@ fi
 
 # Run migrations only if we're the main app container (not reverb/queue)
 if [ "$1" = "php-fpm" ]; then
+    # Ensure cache directories exist and are writable before running artisan commands
+    echo "Ensuring cache directories are ready..."
+    mkdir -p bootstrap/cache storage/framework/cache/data
+    chmod -R 775 bootstrap/cache storage/framework/cache 2>/dev/null || true
+    chown -R www-data:www-data bootstrap/cache storage/framework/cache 2>/dev/null || true
+    
     echo "Running migrations..."
     php artisan migrate --force || echo "Migration failed or already up to date"
 
@@ -120,6 +161,11 @@ if [ "$1" = "php-fpm" ]; then
     
     # app:migrrate-modules
     php artisan app:migrrate-modules || echo "Migration of modules failed or already up to date"
+    
+    # Clear any existing cache first
+    php artisan config:clear || true
+    php artisan route:clear || true
+    php artisan view:clear || true
     
     # Cache configuration for better performance (don't fail if caching fails)
     php artisan config:cache || echo "Config cache failed, continuing..."

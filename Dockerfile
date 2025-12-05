@@ -55,7 +55,7 @@ RUN if [ -f composer.json ]; then \
 fi
 
 # Set proper permissions for Laravel directories (run as root, then switch)
-RUN mkdir -p /var/www/storage/framework/{sessions,views,cache} \
+RUN mkdir -p /var/www/storage/framework/{sessions,views,cache/data} \
     && mkdir -p /var/www/storage/logs \
     && mkdir -p /var/www/bootstrap/cache \
     && chown -R www-data:www-data /var/www/storage \
