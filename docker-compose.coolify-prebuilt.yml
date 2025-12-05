@@ -34,8 +34,6 @@ services:
     image: nginx:alpine
     restart: unless-stopped
     volumes:
-      # Mount repository code for static files
-      - ./:/var/www
       # Mount nginx configs
       - ./docker/nginx/conf.d/:/etc/nginx/conf.d/:ro
     expose:
