@@ -1,0 +1,112 @@
+version: "3.8"
+services:
+  # The Main Application (PHP-FPM)
+  # Coolify will automatically add reverse proxy labels
+  app:
+    build:
+      context: .
+      args:
+        user: ${DOCKER_USER:-laravel}
+        uid: ${DOCKER_UID:-1000}
+    image: ${DOCKER_IMAGE:-mobidonia/whatsdesk:latest}
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    environment:
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT:-3306}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_DATABASE=${DB_DATABASE}
+      - APP_ENV=${APP_ENV:-production}
+      - APP_DEBUG=${APP_DEBUG:-false}
+      - FORCE_HTTPS=${FORCE_HTTPS:-true}
+    # Coolify automatically manages ports and networking
+    expose:
+      - "9000"
+    healthcheck:
+      test: ["CMD", "php", "-r", "exit(0);"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  # Database (can be managed separately in Coolify or included here)
+  db:
+    image: mariadb:10.11
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - dbdata:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "healthcheck.sh --connect || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    shm_size: 256mb
+
+  # Laravel Reverb (Websockets)
+  reverb:
+    image: ${DOCKER_IMAGE:-mobidonia/whatsdesk:latest}
+    restart: unless-stopped
+    working_dir: /var/www
+    command: php artisan reverb:start --host="0.0.0.0" --port=8080
+    volumes:
+      - ./:/var/www
+    environment:
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT:-3306}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_DATABASE=${DB_DATABASE}
+      - REVERB_APP_ID=${REVERB_APP_ID}
+      - REVERB_APP_KEY=${REVERB_APP_KEY}
+      - REVERB_APP_SECRET=${REVERB_APP_SECRET}
+      - REVERB_HOST=0.0.0.0
+      - REVERB_PORT=8080
+      - REVERB_SCHEME=https
+    expose:
+      - "8080"
+    depends_on:
+      db:
+        condition: service_healthy
+      app:
+        condition: service_healthy
+
+  # Queue Worker
+  queue:
+    image: ${DOCKER_IMAGE:-mobidonia/whatsdesk:latest}
+    restart: unless-stopped
+    working_dir: /var/www
+    command: php artisan queue:work --sleep=3 --tries=3 --max-time=3600
+    volumes:
+      - ./:/var/www
+    environment:
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT:-3306}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_DATABASE=${DB_DATABASE}
+    depends_on:
+      db:
+        condition: service_healthy
+      app:
+        condition: service_healthy
+
+volumes:
+  dbdata:
+    driver: local
+
+# Note: Coolify manages:
+# - Network configuration (uses its own network)
+# - SSL certificates (automatic via Caddy)
+# - Reverse proxy setup
+# - Port mapping
+# - Domain configuration
+

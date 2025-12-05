@@ -1,0 +1,52 @@
+# Caddy Configuration File
+# Use this if deploying with Caddy reverse proxy
+# Caddy automatically provisions SSL certificates via Let's Encrypt
+
+# Replace with your domain
+yourdomain.com {
+    # Reverse proxy to PHP-FPM (via Nginx or directly)
+    reverse_proxy app:9000 {
+        # Health check
+        health_uri /health
+        health_interval 10s
+        health_timeout 5s
+    }
+
+    # WebSocket support for Reverb
+    reverse_proxy /app reverb:8080 {
+        # WebSocket upgrade
+        header_up Connection {>Connection}
+        header_up Upgrade {>Upgrade}
+        
+        # Transport for WebSocket
+        transport http {
+            versions h2c
+        }
+    }
+
+    # Security headers
+    header {
+        # Enable HSTS
+        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+        # Prevent clickjacking
+        X-Frame-Options "SAMEORIGIN"
+        # Prevent MIME sniffing
+        X-Content-Type-Options "nosniff"
+        # XSS protection
+        X-XSS-Protection "1; mode=block"
+        # Remove server information
+        -Server
+    }
+
+    # Logging
+    log {
+        output file /var/log/caddy/access.log
+        format json
+    }
+}
+
+# HTTP to HTTPS redirect (for www subdomain or other domains)
+:80 {
+    redir https://yourdomain.com{uri} permanent
+}
+

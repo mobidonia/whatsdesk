@@ -26,8 +26,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Only force HTTPS in production or if FORCE_HTTPS env is set to true
-        if (config('app.env') === 'production' || env('FORCE_HTTPS', false)) {
+        // Force HTTPS if explicitly enabled via FORCE_HTTPS env variable
+        // This allows control via docker-compose environment variables
+        if (env('FORCE_HTTPS', false) === true || env('FORCE_HTTPS', 'false') === 'true') {
             URL::forceScheme('https');
         }
 
