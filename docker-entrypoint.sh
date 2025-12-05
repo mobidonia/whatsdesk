@@ -60,16 +60,17 @@ if [ -n "$DB_HOST" ] && [ "$DB_HOST" != "localhost" ] && [ "$DB_HOST" != "127.0.
     echo "Database is ready!"
 fi
 
-# Fix permissions for Laravel directories
-echo "Setting up permissions..."
-mkdir -p storage/framework/{sessions,views,cache}
+# Create cache directories FIRST - Laravel needs them before reading .env
+echo "Creating cache directories..."
+mkdir -p storage/framework/{sessions,views,cache/data}
 mkdir -p storage/logs
 mkdir -p bootstrap/cache
-# Ensure cache directories are writable
+# Ensure cache directories are writable (run as root, so chown works)
 chown -R www-data:www-data storage bootstrap/cache 2>/dev/null || true
 chmod -R 775 storage bootstrap/cache 2>/dev/null || true
-# Make sure cache files can be created
-touch bootstrap/cache/.gitkeep storage/framework/cache/.gitkeep 2>/dev/null || true
+# Create placeholder files to ensure directories exist
+touch bootstrap/cache/.gitkeep storage/framework/cache/.gitkeep storage/framework/cache/data/.gitkeep 2>/dev/null || true
+echo "Cache directories ready."
 
 # Install dependencies if vendor missing (useful for dev/first run or if code is mounted)
 # Note: If code is baked into the image, dependencies should already be installed during build
@@ -109,10 +110,12 @@ DB_PASSWORD=${DB_PASSWORD:-root}
 
 BROADCAST_DRIVER=reverb
 CACHE_DRIVER=file
+CACHE_STORE=file
 FILESYSTEM_DISK=local
 QUEUE_CONNECTION=database
 SESSION_DRIVER=file
 SESSION_LIFETIME=120
+VIEW_COMPILED_PATH=${VIEW_COMPILED_PATH:-/var/www/storage/framework/views}
 
 REVERB_APP_ID=${REVERB_APP_ID:-whatsdesk}
 REVERB_APP_KEY=${REVERB_APP_KEY:-whatsdesk-key}
@@ -147,8 +150,8 @@ fi
 
 # Run migrations only if we're the main app container (not reverb/queue)
 if [ "$1" = "php-fpm" ]; then
-    # Ensure cache directories exist and are writable before running artisan commands
-    echo "Ensuring cache directories are ready..."
+    # Cache directories already created above, but ensure they're still ready
+    echo "Verifying cache directories..."
     mkdir -p bootstrap/cache storage/framework/cache/data
     chmod -R 775 bootstrap/cache storage/framework/cache 2>/dev/null || true
     chown -R www-data:www-data bootstrap/cache storage/framework/cache 2>/dev/null || true

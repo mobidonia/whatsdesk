@@ -20,13 +20,18 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction --no-script
 # ✅ Now copy full project
 COPY . .
 
-RUN chown -R www-data:www-data /var/www \
+# Create Laravel cache directories with proper structure
+RUN mkdir -p /var/www/storage/framework/{sessions,views,cache/data} \
+    && mkdir -p /var/www/storage/logs \
+    && mkdir -p /var/www/bootstrap/cache \
+    && chown -R www-data:www-data /var/www \
     && chmod -R 775 /var/www/storage /var/www/bootstrap/cache
 
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
-USER www-data
-
+# PHP-FPM needs to run as root to bind to port 9000
+# It will switch to www-data for individual requests
+# Don't use USER www-data here - PHP-FPM handles user switching internally
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["php-fpm"]
