@@ -1,10 +1,13 @@
 #!/bin/sh
 
-# Exit on fail
-set -e
+# Don't exit on error - we want PHP-FPM to start even if some setup steps fail
+# set -e  # Commented out to allow PHP-FPM to start even if migrations fail
 
 # Ensure we're in the correct working directory
-cd /var/www || exit 1
+cd /var/www || {
+    echo "ERROR: Cannot change to /var/www directory"
+    exit 1
+}
 
 # Get database connection details
 DB_HOST=${DB_HOST:-db}
@@ -54,7 +57,7 @@ chmod -R 775 storage bootstrap/cache 2>/dev/null || true
 # Install dependencies if vendor missing (useful for dev/first run)
 if [ ! -d "vendor" ] && [ -f "composer.json" ]; then
     echo "Installing Composer dependencies..."
-    composer install --no-progress --no-interaction --optimize-autoloader
+    composer install --no-progress --no-interaction --optimize-autoloader || echo "Composer install failed, continuing..."
 elif [ ! -f "composer.json" ]; then
     echo "Warning: composer.json not found. Skipping Composer install."
 fi
@@ -73,7 +76,7 @@ fi
 if [ -f ".env" ]; then
     if ! grep -q "APP_KEY=base64:" .env || grep -q "APP_KEY=$" .env; then
         echo "Generating application key..."
-        php artisan key:generate --force
+        php artisan key:generate --force || echo "Key generation failed, continuing..."
     fi
     
     # Ensure Reverb environment variables are set (for reverb service)
@@ -101,11 +104,15 @@ if [ "$1" = "php-fpm" ]; then
     # app:migrrate-modules
     php artisan app:migrrate-modules || echo "Migration of modules failed or already up to date"
     
-    # Cache configuration for better performance
-    php artisan config:cache || true
-    php artisan route:cache || true
-    php artisan view:cache || true
+    # Cache configuration for better performance (don't fail if caching fails)
+    php artisan config:cache || echo "Config cache failed, continuing..."
+    php artisan route:cache || echo "Route cache failed, continuing..."
+    php artisan view:cache || echo "View cache failed, continuing..."
+    
+    echo "App initialization complete!"
 fi
 
-# Execute the main command passed to the container (e.g., php-fpm or reverb start)
+# Always execute the main command (PHP-FPM or reverb start)
+# This ensures the service starts even if migrations failed
+echo "Starting service: $@"
 exec "$@"

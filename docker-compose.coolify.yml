@@ -1,13 +1,17 @@
 version: "3.8"
 services:
   # The Main Application (PHP-FPM)
-  # Coolify will automatically add reverse proxy labels
   app:
+    # Option 1: Build from source (if Dockerfile is in repo root)
     build:
       context: .
+      dockerfile: ./Dockerfile
       args:
         user: ${DOCKER_USER:-laravel}
         uid: ${DOCKER_UID:-1000}
+    # Option 2: Use pre-built image (uncomment if build fails)
+    # Remove 'build:' section above and uncomment:
+    # image: ${DOCKER_IMAGE:-mobidonia/whatsdesk:latest}
     image: ${DOCKER_IMAGE:-mobidonia/whatsdesk:latest}
     restart: unless-stopped
     working_dir: /var/www
@@ -22,7 +26,7 @@ services:
       - APP_ENV=${APP_ENV:-production}
       - APP_DEBUG=${APP_DEBUG:-false}
       - FORCE_HTTPS=${FORCE_HTTPS:-true}
-    # Coolify automatically manages ports and networking
+    # PHP-FPM listens on port 9000 (FastCGI protocol)
     expose:
       - "9000"
     healthcheck:
@@ -31,6 +35,27 @@ services:
       timeout: 10s
       retries: 3
       start_period: 10s
+
+  # Nginx Web Server
+  # Nginx is REQUIRED because:
+  # 1. PHP-FPM uses FastCGI protocol, not HTTP
+  # 2. Coolify's Caddy reverse proxy speaks HTTP
+  # 3. Nginx translates HTTP → FastCGI and handles static files, URL rewriting, etc.
+  # Coolify will proxy to nginx on port 80, nginx proxies to PHP-FPM on port 9000
+  nginx:
+    image: nginx:alpine
+    restart: unless-stopped
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+    expose:
+      - "80"
+    depends_on:
+      app:
+        condition: service_healthy
+      reverb:
+        condition: service_started
+    # Coolify will automatically proxy to this service on port 80
 
   # Database (can be managed separately in Coolify or included here)
   db:
@@ -103,10 +128,29 @@ volumes:
   dbdata:
     driver: local
 
-# Note: Coolify manages:
+# ============================================
+# IMPORTANT: Nginx Configuration
+# ============================================
+# 
+# Option 1: WITH Nginx (Recommended)
+# - Coolify's Caddy → Nginx (port 80) → PHP-FPM (port 9000)
+# - Better performance for static files
+# - Handles URL rewriting (try_files)
+# - Security headers and optimizations
+# - Current setup uses this approach
+#
+# Option 2: WITHOUT Nginx (If Coolify supports FastCGI)
+# - Coolify's Caddy → PHP-FPM (port 9000) directly via FastCGI
+# - Remove nginx service from this file
+# - Configure Coolify to use FastCGI protocol
+# - Less overhead, but may need manual Caddyfile configuration
+#
+# ============================================
+# Coolify manages:
+# ============================================
 # - Network configuration (uses its own network)
 # - SSL certificates (automatic via Caddy)
-# - Reverse proxy setup
+# - Reverse proxy setup (HTTP → Nginx or FastCGI → PHP-FPM)
 # - Port mapping
 # - Domain configuration
 

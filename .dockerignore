@@ -4,14 +4,16 @@
 .gitattributes
 
 # Docker
-Dockerfile
 docker-compose.yml
+docker-compose.prod.yml
+docker-compose.coolify.yml
 .dockerignore
 # Note: docker-entrypoint.sh is needed for the build, so don't exclude it
 
 # Documentation
 README.md
 *.md
+!DEPLOYMENT.md
 
 # IDE
 .idea
@@ -53,4 +55,3 @@ yarn.lock
 # OS
 .DS_Store
 Thumbs.db
-

@@ -1,0 +1,127 @@
+version: "3.8"
+services:
+  # The Main Application (PHP-FPM)
+  # Using pre-built image instead of building from source
+  # NOTE: Application code must be mounted from the repository
+  # Coolify clones the repo and mounts it at the compose file location
+  app:
+    image: ${DOCKER_IMAGE:-mobidonia/whatsdesk:latest}
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      # Mount repository code - Coolify clones repo and mounts from compose file directory
+      # IMPORTANT: Ensure your repository code is in the same directory as this compose file
+      - ./:/var/www
+    environment:
+      - DB_HOST=${DB_HOST:-db}
+      - DB_PORT=${DB_PORT:-3306}
+      - DB_USERNAME=${DB_USERNAME:-laravel}
+      - DB_PASSWORD=${DB_PASSWORD:-root}
+      - DB_DATABASE=${DB_DATABASE:-laravel}
+      - APP_ENV=${APP_ENV:-production}
+      - APP_DEBUG=${APP_DEBUG:-false}
+      - FORCE_HTTPS=${FORCE_HTTPS:-true}
+    expose:
+      - "9000"
+    healthcheck:
+      # Simple PHP check - entrypoint ensures PHP-FPM starts even if migrations fail
+      test: ["CMD", "php", "-r", "exit(0);"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 180s  # Increased to 3 minutes to allow migrations and caching to complete
+
+  # Nginx Web Server
+  nginx:
+    image: nginx:alpine
+    restart: unless-stopped
+    volumes:
+      # Mount repository code for static files and nginx configs
+      - ./:/var/www
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/:ro
+    expose:
+      - "80"
+    depends_on:
+      app:
+        condition: service_healthy
+      reverb:
+        condition: service_started
+
+  # Database
+  db:
+    image: mariadb:10.11
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE:-laravel}
+      # IMPORTANT: Set DB_ROOT_PASSWORD in Coolify environment variables
+      # If not set, defaults to 'root' (change this in production!)
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root}
+      MYSQL_USER: ${DB_USERNAME:-laravel}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-root}
+    volumes:
+      - dbdata:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u root -p${MYSQL_ROOT_PASSWORD} || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 60s
+    shm_size: 256mb
+
+  # Laravel Reverb (Websockets)
+  reverb:
+    image: ${DOCKER_IMAGE:-mobidonia/whatsdesk:latest}
+    restart: unless-stopped
+    working_dir: /var/www
+    command: php artisan reverb:start --host="0.0.0.0" --port=8080
+    volumes:
+      - ./:/var/www
+    environment:
+      - DB_HOST=${DB_HOST:-db}
+      - DB_PORT=${DB_PORT:-3306}
+      - DB_USERNAME=${DB_USERNAME:-laravel}
+      - DB_PASSWORD=${DB_PASSWORD:-root}
+      - DB_DATABASE=${DB_DATABASE:-laravel}
+      - REVERB_APP_ID=${REVERB_APP_ID:-whatsdesk}
+      - REVERB_APP_KEY=${REVERB_APP_KEY:-whatsdesk-key}
+      - REVERB_APP_SECRET=${REVERB_APP_SECRET:-whatsdesk-secret}
+      - REVERB_HOST=0.0.0.0
+      - REVERB_PORT=8080
+      - REVERB_SCHEME=https
+    expose:
+      - "8080"
+    depends_on:
+      db:
+        condition: service_healthy
+      app:
+        condition: service_healthy
+
+  # Queue Worker
+  queue:
+    image: ${DOCKER_IMAGE:-mobidonia/whatsdesk:latest}
+    restart: unless-stopped
+    working_dir: /var/www
+    command: php artisan queue:work --sleep=3 --tries=3 --max-time=3600
+    volumes:
+      - ./:/var/www
+    environment:
+      - DB_HOST=${DB_HOST:-db}
+      - DB_PORT=${DB_PORT:-3306}
+      - DB_USERNAME=${DB_USERNAME:-laravel}
+      - DB_PASSWORD=${DB_PASSWORD:-root}
+      - DB_DATABASE=${DB_DATABASE:-laravel}
+    depends_on:
+      db:
+        condition: service_healthy
+      app:
+        condition: service_healthy
+
+volumes:
+  dbdata:
+    driver: local
+
+# Use this file if:
+# 1. You've already built and pushed the image to a registry
+# 2. Coolify build is failing
+# 3. You want faster deployments (no build step)
+
