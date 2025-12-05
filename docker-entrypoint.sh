@@ -68,12 +68,15 @@ mkdir -p bootstrap/cache
 chown -R www-data:www-data storage bootstrap/cache 2>/dev/null || true
 chmod -R 775 storage bootstrap/cache 2>/dev/null || true
 
-# Install dependencies if vendor missing (useful for dev/first run)
+# Install dependencies if vendor missing (useful for dev/first run or if code is mounted)
+# Note: If code is baked into the image, dependencies should already be installed during build
 if [ ! -d "vendor" ] && [ -f "composer.json" ]; then
     echo "Installing Composer dependencies..."
     composer install --no-progress --no-interaction --optimize-autoloader || echo "Composer install failed, continuing..."
+elif [ -d "vendor" ] && [ -f "composer.json" ]; then
+    echo "Composer dependencies already installed (from image build)."
 elif [ ! -f "composer.json" ]; then
-    echo "Warning: composer.json not found. Skipping Composer install."
+    echo "Warning: composer.json not found. Code may not be mounted or copied correctly."
 fi
 
 # Set up env file if missing

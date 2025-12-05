@@ -44,11 +44,15 @@ WORKDIR /var/www
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
-# Copy application code (optional - uncomment if building image with code baked in)
-# For Coolify pre-built images, code should be mounted via volumes
-# If volume mounting doesn't work, uncomment these lines and rebuild the image:
-# COPY --chown=www-data:www-data . /var/www
-# RUN if [ -f composer.json ]; then composer install --no-dev --optimize-autoloader --no-interaction || true; fi
+# Copy application code into the image
+# This ensures code is available even if volume mounting fails in Coolify
+COPY --chown=www-data:www-data . /var/www
+
+# Install Composer dependencies during build (production optimized)
+# Skip scripts to avoid issues during build, they'll run in entrypoint if needed
+RUN if [ -f composer.json ]; then \
+    composer install --no-dev --optimize-autoloader --no-interaction --no-scripts || true; \
+fi
 
 # Set proper permissions for Laravel directories (run as root, then switch)
 RUN mkdir -p /var/www/storage/framework/{sessions,views,cache} \

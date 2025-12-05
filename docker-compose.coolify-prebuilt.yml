@@ -1,17 +1,15 @@
 version: "3.8"
 services:
   # The Main Application (PHP-FPM)
-  # Using pre-built image instead of building from source
-  # NOTE: Application code must be mounted from the repository
-  # Coolify clones the repo and mounts it at the compose file location
+  # Using pre-built image with code baked in
+  # Code is copied into the image during build, so no volume mount needed
   app:
     image: ${DOCKER_IMAGE:-mobidonia/whatsdesk:latest}
     restart: unless-stopped
     working_dir: /var/www
-    volumes:
-      # Mount repository code - Coolify clones repo and mounts from compose file directory
-      # IMPORTANT: Ensure your repository code is in the same directory as this compose file
-      - ./:/var/www
+    # No volume mount - code is in the image
+    # volumes:
+    #   - ./:/var/www
     environment:
       - DB_HOST=${DB_HOST:-db}
       - DB_PORT=${DB_PORT:-3306}
@@ -77,8 +75,9 @@ services:
     restart: unless-stopped
     working_dir: /var/www
     command: php artisan reverb:start --host="0.0.0.0" --port=8080
-    volumes:
-      - ./:/var/www
+    # No volume mount - code is in the image
+    # volumes:
+    #   - ./:/var/www
     environment:
       - DB_HOST=${DB_HOST:-db}
       - DB_PORT=${DB_PORT:-3306}
@@ -105,8 +104,9 @@ services:
     restart: unless-stopped
     working_dir: /var/www
     command: php artisan queue:work --sleep=3 --tries=3 --max-time=3600
-    volumes:
-      - ./:/var/www
+    # No volume mount - code is in the image
+    # volumes:
+    #   - ./:/var/www
     environment:
       - DB_HOST=${DB_HOST:-db}
       - DB_PORT=${DB_PORT:-3306}
@@ -124,7 +124,11 @@ volumes:
     driver: local
 
 # Use this file if:
-# 1. You've already built and pushed the image to a registry
+# 1. You've already built and pushed the image to a registry WITH code included
 # 2. Coolify build is failing
 # 3. You want faster deployments (no build step)
+#
+# IMPORTANT: The Dockerfile must COPY the code into the image during build.
+# Code is baked into the image, so volume mounts are not needed for app/reverb/queue.
+# Nginx still uses volume mounts for static files and configs.
 
