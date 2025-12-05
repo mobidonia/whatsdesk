@@ -3,6 +3,8 @@
 # Exit on fail
 set -e
 
+# Ensure we're in the correct working directory
+cd /var/www || exit 1
 
 # Get database connection details
 DB_HOST=${DB_HOST:-db}
@@ -50,9 +52,11 @@ chown -R www-data:www-data storage bootstrap/cache 2>/dev/null || true
 chmod -R 775 storage bootstrap/cache 2>/dev/null || true
 
 # Install dependencies if vendor missing (useful for dev/first run)
-if [ ! -d "vendor" ]; then
+if [ ! -d "vendor" ] && [ -f "composer.json" ]; then
     echo "Installing Composer dependencies..."
     composer install --no-progress --no-interaction --optimize-autoloader
+elif [ ! -f "composer.json" ]; then
+    echo "Warning: composer.json not found. Skipping Composer install."
 fi
 
 # Set up env file if missing
@@ -90,6 +94,12 @@ fi
 if [ "$1" = "php-fpm" ]; then
     echo "Running migrations..."
     php artisan migrate --force || echo "Migration failed or already up to date"
+
+    # Seed the database
+    php artisan db:seed --force || echo "Seeding failed or already up to date"
+    
+    # app:migrrate-modules
+    php artisan app:migrrate-modules || echo "Migration of modules failed or already up to date"
     
     # Cache configuration for better performance
     php artisan config:cache || true

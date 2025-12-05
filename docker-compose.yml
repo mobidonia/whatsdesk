@@ -5,8 +5,8 @@ services:
     build:
       context: .
       args:
-        user: laravel
-        uid: 1000
+        user: ${DOCKER_USER:-laravel}
+        uid: ${DOCKER_UID:-1000}
     image: mobidonia/whatsdesk:latest
     container_name: whatsdesk-app
     restart: unless-stopped
@@ -22,10 +22,11 @@ services:
     networks:
       - laravel
     healthcheck:
-      test: ["CMD-SHELL", "php -r 'exit(0);' || exit(1)"]
+      test: ["CMD", "php", "-r", "exit(0);"]
       interval: 30s
       timeout: 10s
       retries: 3
+      start_period: 10s
 
   # The Web Server (Nginx)
   nginx:
@@ -33,7 +34,7 @@ services:
     container_name: whatsdesk-nginx
     restart: unless-stopped
     ports:
-      - "80:80"
+      - "${NGINX_PORT:-8080}:80"
     volumes:
       - ./:/var/www
       - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
@@ -47,24 +48,31 @@ services:
 
   # The Database
   db:
-    image: mysql:8.0
+    image: mariadb:10.11
     container_name: whatsdesk-mysql
     restart: unless-stopped
     environment:
+      # Use DB_DATABASE from .env or default to 'laravel'
       MYSQL_DATABASE: ${DB_DATABASE:-laravel}
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-root}
-      MYSQL_PASSWORD: ${DB_PASSWORD:-root}
+      # Root password: Use DB_ROOT_PASSWORD if set, otherwise default 'root'
+      # IMPORTANT: Change this in production! Set DB_ROOT_PASSWORD in your .env file
+      # Note: If you want to use DB_PASSWORD for root, set DB_ROOT_PASSWORD=${DB_PASSWORD} in your .env
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root}
+      # Note: MYSQL_USER cannot be "root" - MySQL/MariaDB doesn't allow creating a regular user named "root"
+      # If you need to use root, set DB_USERNAME to something else and use root credentials directly
       MYSQL_USER: ${DB_USERNAME:-laravel}
-      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+      MYSQL_PASSWORD: ${DB_PASSWORD:-root}
     volumes:
       - dbdata:/var/lib/mysql
     networks:
       - laravel
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      test: ["CMD-SHELL", "healthcheck.sh --connect || exit 1"]
       interval: 10s
       timeout: 5s
       retries: 5
+      start_period: 30s
+    shm_size: 256mb
 
   # Laravel Reverb (Websockets)
   reverb:
@@ -93,7 +101,7 @@ services:
       db:
         condition: service_healthy
       app:
-        condition: service_started
+        condition: service_healthy
     networks:
       - laravel
 
@@ -116,7 +124,7 @@ services:
       db:
         condition: service_healthy
       app:
-        condition: service_started
+        condition: service_healthy
     networks:
       - laravel
 
