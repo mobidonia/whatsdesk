@@ -180,7 +180,21 @@ if [ "$1" = "php-fpm" ]; then
     echo "App initialization complete!"
 fi
 
-# Always execute the main command (PHP-FPM or reverb start)
-# This ensures the service starts even if migrations failed
-echo "Starting service: $@"
-exec "$@"
+# Determine what service to start based on command
+if [ "$1" = "php-fpm" ]; then
+    # Start both PHP-FPM and Nginx using supervisor
+    echo "Starting PHP-FPM and Nginx with supervisor..."
+    exec /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
+elif [ "$1" = "reverb:start" ] || [ "$1" = "reverb" ]; then
+    # For reverb service, just start the reverb command
+    echo "Starting Reverb..."
+    exec php artisan reverb:start --host="0.0.0.0" --port=8080
+elif [ "$1" = "queue:work" ] || [ "$1" = "queue" ]; then
+    # For queue service, just start the queue worker
+    echo "Starting Queue Worker..."
+    exec php artisan queue:work --sleep=3 --tries=3 --max-time=3600
+else
+    # For any other command, execute it directly
+    echo "Starting service: $@"
+    exec "$@"
+fi

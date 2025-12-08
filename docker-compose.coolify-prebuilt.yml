@@ -1,8 +1,9 @@
 version: "3.8"
 services:
-  # The Main Application (PHP-FPM)
+  # The Main Application (PHP-FPM + Nginx combined)
   # Using pre-built image with code baked in
   # Code is copied into the image during build, so no volume mount needed
+  # Nginx and PHP-FPM run together in the same container using supervisor
   app:
     image: ${DOCKER_IMAGE:-mobidonia/whatsdesk:latest}
     restart: unless-stopped
@@ -17,35 +18,18 @@ services:
       - DB_PASSWORD=${DB_PASSWORD:-root}
       - DB_DATABASE=${DB_DATABASE:-laravel}
       - APP_ENV=${APP_ENV:-production}
-      - APP_URL=$SERVICE_URL_NGINX
+      - APP_URL=${APP_URL:-http://localhost}
       - APP_DEBUG=${APP_DEBUG:-false}
       - FORCE_HTTPS=${FORCE_HTTPS:-true}
     expose:
-      - "9000"
+      - "80"  # Nginx listens on port 80
     healthcheck:
-      # Simple PHP check - entrypoint ensures PHP-FPM starts even if migrations fail
+      # Check if PHP is working (PHP-FPM and Nginx are managed by supervisor)
       test: ["CMD", "php", "-r", "exit(0);"]
       interval: 30s
       timeout: 10s
       retries: 5
       start_period: 180s  # Increased to 3 minutes to allow migrations and caching to complete
-
-  # Nginx Web Server
-  nginx:
-    image: nginx:alpine
-    restart: unless-stopped
-    environment:
-      - APP_URL=$SERVICE_URL_NGINX
-    volumes:
-      # Mount nginx configs
-      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/:ro
-    expose:
-      - "80"
-    depends_on:
-      app:
-        condition: service_healthy
-      reverb:
-        condition: service_started
 
   # Database
   db:
@@ -75,7 +59,7 @@ services:
     image: ${DOCKER_IMAGE:-mobidonia/whatsdesk:latest}
     restart: unless-stopped
     working_dir: /var/www
-    command: php artisan reverb:start --host="0.0.0.0" --port=8080
+    command: ["reverb"]
     # No volume mount - code is in the image
     # volumes:
     #   - ./:/var/www
@@ -104,7 +88,7 @@ services:
     image: ${DOCKER_IMAGE:-mobidonia/whatsdesk:latest}
     restart: unless-stopped
     working_dir: /var/www
-    command: php artisan queue:work --sleep=3 --tries=3 --max-time=3600
+    command: ["queue"]
     # No volume mount - code is in the image
     # volumes:
     #   - ./:/var/www
@@ -131,5 +115,5 @@ volumes:
 #
 # IMPORTANT: The Dockerfile must COPY the code into the image during build.
 # Code is baked into the image, so volume mounts are not needed for app/reverb/queue.
-# Nginx still uses volume mounts for static files and configs.
+# Nginx configs are also baked into the image - everything runs in one container!
 

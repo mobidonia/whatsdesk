@@ -1,6 +1,7 @@
 version: "3.8"
 services:
-  # The Main Application (PHP-FPM)
+  # The Main Application (PHP-FPM + Nginx combined)
+  # Nginx and PHP-FPM run together in the same container using supervisor
   app:
     # Option 1: Build from source (if Dockerfile is in repo root)
     build:
@@ -26,36 +27,16 @@ services:
       - APP_ENV=${APP_ENV:-production}
       - APP_DEBUG=${APP_DEBUG:-false}
       - FORCE_HTTPS=${FORCE_HTTPS:-true}
-    # PHP-FPM listens on port 9000 (FastCGI protocol)
+    # Nginx listens on port 80 and proxies to PHP-FPM
     expose:
-      - "9000"
+      - "80"
     healthcheck:
+      # Check if PHP is working (PHP-FPM and Nginx are managed by supervisor)
       test: ["CMD", "php", "-r", "exit(0);"]
       interval: 30s
       timeout: 10s
       retries: 3
-      start_period: 10s
-
-  # Nginx Web Server
-  # Nginx is REQUIRED because:
-  # 1. PHP-FPM uses FastCGI protocol, not HTTP
-  # 2. Coolify's Caddy reverse proxy speaks HTTP
-  # 3. Nginx translates HTTP → FastCGI and handles static files, URL rewriting, etc.
-  # Coolify will proxy to nginx on port 80, nginx proxies to PHP-FPM on port 9000
-  nginx:
-    image: nginx:alpine
-    restart: unless-stopped
-    volumes:
-      - ./:/var/www
-      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
-    expose:
-      - "80"
-    depends_on:
-      app:
-        condition: service_healthy
-      reverb:
-        condition: service_started
-    # Coolify will automatically proxy to this service on port 80
+      start_period: 180s
 
   # Database (can be managed separately in Coolify or included here)
   db:
@@ -81,7 +62,7 @@ services:
     image: ${DOCKER_IMAGE:-mobidonia/whatsdesk:latest}
     restart: unless-stopped
     working_dir: /var/www
-    command: php artisan reverb:start --host="0.0.0.0" --port=8080
+    command: ["reverb"]
     volumes:
       - ./:/var/www
     environment:
@@ -109,7 +90,7 @@ services:
     image: ${DOCKER_IMAGE:-mobidonia/whatsdesk:latest}
     restart: unless-stopped
     working_dir: /var/www
-    command: php artisan queue:work --sleep=3 --tries=3 --max-time=3600
+    command: ["queue"]
     volumes:
       - ./:/var/www
     environment:
@@ -129,28 +110,24 @@ volumes:
     driver: local
 
 # ============================================
-# IMPORTANT: Nginx Configuration
+# IMPORTANT: Single Container Setup
 # ============================================
 # 
-# Option 1: WITH Nginx (Recommended)
-# - Coolify's Caddy → Nginx (port 80) → PHP-FPM (port 9000)
-# - Better performance for static files
-# - Handles URL rewriting (try_files)
-# - Security headers and optimizations
-# - Current setup uses this approach
-#
-# Option 2: WITHOUT Nginx (If Coolify supports FastCGI)
-# - Coolify's Caddy → PHP-FPM (port 9000) directly via FastCGI
-# - Remove nginx service from this file
-# - Configure Coolify to use FastCGI protocol
-# - Less overhead, but may need manual Caddyfile configuration
+# PHP-FPM and Nginx run together in the same container using supervisor.
+# This simplifies deployment - only one image to build and manage!
+# 
+# Architecture:
+# - Coolify's Caddy → App Container (Nginx on port 80) → PHP-FPM (port 9000)
+# - Nginx handles HTTP requests, static files, URL rewriting
+# - PHP-FPM handles PHP execution
+# - Both services managed by supervisor in the same container
 #
 # ============================================
 # Coolify manages:
 # ============================================
 # - Network configuration (uses its own network)
 # - SSL certificates (automatic via Caddy)
-# - Reverse proxy setup (HTTP → Nginx or FastCGI → PHP-FPM)
+# - Reverse proxy setup (HTTP → App Container port 80)
 # - Port mapping
 # - Domain configuration
 
