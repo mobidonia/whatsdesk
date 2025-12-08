@@ -24,10 +24,10 @@ COPY . .
 RUN sed -i 's/^listen = .*/listen = 0.0.0.0:9000/' /usr/local/etc/php-fpm.d/www.conf
 
 # Copy Nginx configuration files
+# Only copy HTTP config - SSL is handled by Coolify's Caddy reverse proxy
 COPY docker/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
-COPY docker/nginx/conf.d/default-ssl.conf /etc/nginx/conf.d/default-ssl.conf
-# Remove default nginx config
-RUN rm -f /etc/nginx/conf.d/default.conf.bak 2>/dev/null || true
+# Remove default nginx config and any SSL configs (Coolify handles SSL)
+RUN rm -f /etc/nginx/conf.d/default.conf.bak /etc/nginx/conf.d/default-ssl.conf 2>/dev/null || true
 
 # Create Laravel cache directories with proper structure
 RUN mkdir -p /var/www/storage/framework/{sessions,views,cache/data} \
