@@ -65,6 +65,8 @@ echo "Creating cache directories..."
 mkdir -p storage/framework/{sessions,views,cache/data}
 mkdir -p storage/logs
 mkdir -p bootstrap/cache
+# Some packages expect module view directories to exist; create a safe placeholder
+mkdir -p resources/views/modules/agents
 # Ensure cache directories are writable (run as root, so chown works)
 chown -R www-data:www-data storage bootstrap/cache 2>/dev/null || true
 chmod -R 775 storage bootstrap/cache 2>/dev/null || true
