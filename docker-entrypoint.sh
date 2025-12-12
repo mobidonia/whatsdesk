@@ -168,6 +168,14 @@ if [ -z "$1" ] || [ "$1" = "octane" ] || [ "$1" = "frankenphp" ]; then
     # app:migrrate-modules
     php artisan app:migrrate-modules || echo "Migration of modules failed or already up to date"
 
+    # Link storage to public
+    echo "Linking storage to public..."
+    php artisan storage:link || echo "Storage link failed"
+
+    # Create installed file
+    echo "Creating installed flag file..."
+    touch /var/www/storage/installed || echo "Failed to create installed file"
+
     #touch /storage/installed
     touch /storage/installed
 
