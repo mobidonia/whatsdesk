@@ -21,7 +21,7 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction --no-script
 # ✅ Now copy full project
 COPY . .
 
-RUN sed -i 's/^listen = .*/listen = 0.0.0.0:9000/' /usr/local/etc/php-fpm.d/www.conf
+RUN sed -i 's/^listen = .*/listen = 127.0.0.1:9000/' /usr/local/etc/php-fpm.d/www.conf
 
 # Copy Nginx configuration files
 # Only copy HTTP config - SSL is handled by Coolify's Caddy reverse proxy
@@ -41,6 +41,8 @@ COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+EXPOSE 80
 
 # PHP-FPM and Nginx need to run as root
 # They will switch to www-data for individual requests
