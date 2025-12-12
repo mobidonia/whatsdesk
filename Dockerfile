@@ -66,6 +66,8 @@ ENV FRANKENPHP_CONFIG="worker /var/www/public { listen 0.0.0.0:80 }"
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
+EXPOSE 8000
+
 # FrankenPHP runs as root but switches to www-data for requests
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["octane"]

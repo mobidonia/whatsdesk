@@ -167,6 +167,12 @@ if [ -z "$1" ] || [ "$1" = "octane" ] || [ "$1" = "frankenphp" ]; then
     
     # app:migrrate-modules
     php artisan app:migrrate-modules || echo "Migration of modules failed or already up to date"
+
+    #touch /storage/installed
+    touch /storage/installed
+
+    # touch /storage/activated
+    touch /storage/activation
     
     # Clear any existing cache first
     php artisan config:clear || true
