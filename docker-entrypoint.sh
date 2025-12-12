@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# Don't exit on error - we want PHP-FPM to start even if some setup steps fail
-# set -e  # Commented out to allow PHP-FPM to start even if migrations fail
+# Don't exit on error - we want FrankenPHP to start even if some setup steps fail
+# set -e  # Commented out to allow FrankenPHP to start even if migrations fail
 
 # Ensure we're in the correct working directory
 cd /var/www || {
@@ -20,7 +20,7 @@ if [ ! -f "composer.json" ] && [ ! -f "artisan" ]; then
     echo "1. Check Coolify volume mounting settings"
     echo "2. Rebuild the Docker image WITH code included (modify Dockerfile to COPY . /var/www)"
     echo ""
-    # Don't exit - let PHP-FPM start anyway so healthcheck can pass
+    # Don't exit - let FrankenPHP start anyway so healthcheck can pass
 fi
 
 # Get database connection details
@@ -151,7 +151,8 @@ if [ -f ".env" ]; then
 fi
 
 # Run migrations only if we're the main app container (not reverb/queue)
-if [ "$1" = "php-fpm" ]; then
+# Check if command is empty, octane, or frankenphp (main app)
+if [ -z "$1" ] || [ "$1" = "octane" ] || [ "$1" = "frankenphp" ]; then
     # Cache directories already created above, but ensure they're still ready
     echo "Verifying cache directories..."
     mkdir -p bootstrap/cache storage/framework/cache/data
@@ -181,10 +182,10 @@ if [ "$1" = "php-fpm" ]; then
 fi
 
 # Determine what service to start based on command
-if [ "$1" = "php-fpm" ]; then
-    # Start both PHP-FPM and Nginx using supervisor
-    echo "Starting PHP-FPM and Nginx with supervisor..."
-    exec /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
+if [ -z "$1" ] || [ "$1" = "octane" ] || [ "$1" = "frankenphp" ]; then
+    # Start FrankenPHP via Octane
+    echo "Starting FrankenPHP (Octane)..."
+    exec php artisan octane:start --server=frankenphp
 elif [ "$1" = "reverb:start" ] || [ "$1" = "reverb" ]; then
     # For reverb service, just start the reverb command
     echo "Starting Reverb..."

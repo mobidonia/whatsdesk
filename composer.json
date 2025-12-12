@@ -20,6 +20,7 @@
         "laravel/cashier": "^14.9",
         "laravel/framework": "^10.41",
         "laravel/jetstream": "^4.0",
+        "laravel/octane": "^2.13",
         "laravel/sanctum": "^3.2",
         "laravel/socialite": "^5.9",
         "laravel/telescope": "^4.16",

@@ -22,3 +22,7 @@ Homestead.yamls
 npm-debug.log
 yarn-error.log
 .diff-files.txt
+
+**/caddy
+frankenphp
+frankenphp-worker.php
