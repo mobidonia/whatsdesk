@@ -7,17 +7,29 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions using install-php-extensions (recommended by FrankenPHP)
-RUN install-php-extensions \
-    pcntl \
-    pdo_mysql \
-    pdo_pgsql \
-    zip \
-    mbstring \
-    bcmath \
-    gd \
-    intl \
-    exif \
-    opcache
+# If install-php-extensions is not available, fall back to docker-php-ext-install
+RUN if command -v install-php-extensions >/dev/null 2>&1; then \
+        install-php-extensions \
+            pcntl \
+            pdo_mysql \
+            pdo_pgsql \
+            zip \
+            mbstring \
+            bcmath \
+            gd \
+            intl \
+            exif \
+            opcache; \
+    else \
+        apt-get update && apt-get install -y \
+            libexif-dev libpq-dev libzip-dev \
+            libpng-dev libonig-dev libxml2-dev \
+            libfreetype6-dev libjpeg-dev libicu-dev \
+            && docker-php-ext-configure gd --with-freetype --with-jpeg \
+            && docker-php-ext-install \
+                pcntl pdo_mysql pdo_pgsql zip mbstring bcmath gd intl exif opcache \
+            && apt-get clean && rm -rf /var/lib/apt/lists/*; \
+    fi
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
@@ -29,8 +41,14 @@ COPY composer.json composer.lock* ./
 # Install Composer dependencies
 # Note: --no-scripts is used to avoid running Laravel scripts that require .env file
 # Scripts will run later in the entrypoint after .env is created
-# Increase memory limit for Composer and set platform requirements
-RUN COMPOSER_MEMORY_LIMIT=-1 composer install --no-dev --optimize-autoloader --no-interaction --no-scripts --prefer-dist
+# Use --ignore-platform-reqs to avoid platform requirement issues during Docker build
+RUN COMPOSER_MEMORY_LIMIT=-1 composer install \
+    --no-dev \
+    --optimize-autoloader \
+    --no-interaction \
+    --no-scripts \
+    --prefer-dist \
+    --ignore-platform-reqs
 
 # ✅ Now copy full project
 COPY . .
