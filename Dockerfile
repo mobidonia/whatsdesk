@@ -46,4 +46,4 @@ RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 # They will switch to www-data for individual requests
 # Don't use USER www-data here - services handle user switching internally
 ENTRYPOINT ["docker-entrypoint.sh"]
-CMD ["php-fpm"]
+CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
