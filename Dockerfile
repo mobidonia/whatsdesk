@@ -1,21 +1,36 @@
 FROM dunglas/frankenphp
 
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
-    libexif-dev default-mysql-client postgresql-client libpq-dev \
-    procps net-tools nano git curl unzip zip libzip-dev \
-    libpng-dev libonig-dev libxml2-dev libfreetype6-dev libjpeg-dev libicu-dev \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install pdo pdo_mysql pdo_pgsql zip mbstring bcmath gd intl exif pcntl \
+    default-mysql-client postgresql-client \
+    procps net-tools nano git curl unzip \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Install PHP extensions using install-php-extensions (recommended by FrankenPHP)
+RUN install-php-extensions \
+    pcntl \
+    pdo_mysql \
+    pdo_pgsql \
+    zip \
+    mbstring \
+    bcmath \
+    gd \
+    intl \
+    exif \
+    opcache
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www
 
 # ✅ Copy only composer files first (for caching)
-COPY composer.json composer.lock ./
+COPY composer.json composer.lock* ./
 
-RUN composer install --no-dev --optimize-autoloader --no-interaction --no-scripts
+# Install Composer dependencies
+# Note: --no-scripts is used to avoid running Laravel scripts that require .env file
+# Scripts will run later in the entrypoint after .env is created
+# Increase memory limit for Composer and set platform requirements
+RUN COMPOSER_MEMORY_LIMIT=-1 composer install --no-dev --optimize-autoloader --no-interaction --no-scripts --prefer-dist
 
 # ✅ Now copy full project
 COPY . .
