@@ -61,17 +61,36 @@ if [ -n "$DB_HOST" ] && [ "$DB_HOST" != "localhost" ] && [ "$DB_HOST" != "127.0.
 fi
 
 # Create cache directories FIRST - Laravel needs them before reading .env
+# This is especially important when volumes are mounted (like in Railway)
 echo "Creating cache directories..."
-mkdir -p storage/framework/{sessions,views,cache/data}
+mkdir -p storage/framework/sessions
+mkdir -p storage/framework/views
+mkdir -p storage/framework/cache/data
 mkdir -p storage/logs
 mkdir -p bootstrap/cache
 # Some packages expect module view directories to exist; create a safe placeholder
 mkdir -p resources/views/modules/agents
+
 # Ensure cache directories are writable (run as root, so chown works)
+# This is critical when volumes are mounted - they may have wrong permissions
 chown -R www-data:www-data storage bootstrap/cache 2>/dev/null || true
 chmod -R 775 storage bootstrap/cache 2>/dev/null || true
+
+# Explicitly set permissions on sessions directory (critical for file sessions)
+chmod 775 storage/framework/sessions 2>/dev/null || true
+chown www-data:www-data storage/framework/sessions 2>/dev/null || true
+
 # Create placeholder files to ensure directories exist
 touch bootstrap/cache/.gitkeep storage/framework/cache/.gitkeep storage/framework/cache/data/.gitkeep 2>/dev/null || true
+touch storage/framework/sessions/.gitkeep 2>/dev/null || true
+
+# Verify sessions directory is writable
+if [ ! -w "storage/framework/sessions" ]; then
+    echo "WARNING: storage/framework/sessions is not writable! Attempting to fix..."
+    chmod 775 storage/framework/sessions 2>/dev/null || true
+    chown www-data:www-data storage/framework/sessions 2>/dev/null || true
+fi
+
 echo "Cache directories ready."
 
 # Install dependencies if vendor missing (useful for dev/first run or if code is mounted)
@@ -94,7 +113,7 @@ if [ ! -f ".env" ]; then
         echo "Creating minimal .env file from environment variables..."
         # Create a minimal .env file with essential settings
         cat > .env <<EOF
-APP_NAME=Laravel
+APP_NAME=${APP_NAME:-WhatsDesk}
 APP_ENV=${APP_ENV:-production}
 APP_KEY=
 APP_DEBUG=${APP_DEBUG:-false}
@@ -154,10 +173,15 @@ fi
 # Check if command is empty, octane, or frankenphp (main app)
 if [ -z "$1" ] || [ "$1" = "octane" ] || [ "$1" = "frankenphp" ]; then
     # Cache directories already created above, but ensure they're still ready
+    # This is especially important when volumes are mounted
     echo "Verifying cache directories..."
-    mkdir -p bootstrap/cache storage/framework/cache/data
-    chmod -R 775 bootstrap/cache storage/framework/cache 2>/dev/null || true
-    chown -R www-data:www-data bootstrap/cache storage/framework/cache 2>/dev/null || true
+    mkdir -p bootstrap/cache storage/framework/cache/data storage/framework/sessions storage/framework/views storage/logs
+    chmod -R 775 bootstrap/cache storage/framework storage/logs 2>/dev/null || true
+    chown -R www-data:www-data bootstrap/cache storage/framework storage/logs 2>/dev/null || true
+    
+    # Explicitly ensure sessions directory is writable
+    chmod 775 storage/framework/sessions 2>/dev/null || true
+    chown www-data:www-data storage/framework/sessions 2>/dev/null || true
     
     echo "Running migrations..."
     php artisan migrate --force || echo "Migration failed or already up to date"
@@ -175,12 +199,7 @@ if [ -z "$1" ] || [ "$1" = "octane" ] || [ "$1" = "frankenphp" ]; then
     # Create installed file
     echo "Creating installed flag file..."
     touch /var/www/storage/installed || echo "Failed to create installed file"
-
-    #touch /storage/installed
-    touch /storage/installed
-
-    # touch /storage/activated
-    touch /storage/activation
+    touch /var/www/storage/activation || echo "Failed to create activation file"
     
     # Clear any existing cache first
     php artisan config:clear || true
