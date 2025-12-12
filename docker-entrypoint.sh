@@ -196,6 +196,30 @@ if [ -z "$1" ] || [ "$1" = "octane" ] || [ "$1" = "frankenphp" ]; then
     echo "Linking storage to public..."
     php artisan storage:link || echo "Storage link failed"
 
+    # Build frontend assets (Vite)
+    echo "Building frontend assets..."
+    if [ -f "package.json" ]; then
+        # Ensure public/build directory exists and is writable
+        mkdir -p public/build
+        chmod -R 775 public/build 2>/dev/null || true
+        chown -R www-data:www-data public/build 2>/dev/null || true
+        
+        # Install npm dependencies if node_modules doesn't exist or package.json changed
+        if [ ! -d "node_modules" ] || [ "package.json" -nt "node_modules" ]; then
+            echo "Installing npm dependencies..."
+            npm ci --production=false || npm install || echo "npm install failed, continuing..."
+        fi
+        # Build production assets
+        echo "Running npm run build..."
+        npm run build || echo "npm build failed, continuing..."
+        
+        # Ensure built assets are readable
+        chmod -R 755 public/build 2>/dev/null || true
+        chown -R www-data:www-data public/build 2>/dev/null || true
+    else
+        echo "package.json not found, skipping asset build"
+    fi
+
     # Create installed file
     echo "Creating installed flag file..."
     touch /var/www/storage/installed || echo "Failed to create installed file"

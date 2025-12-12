@@ -1,9 +1,11 @@
 FROM dunglas/frankenphp
 
-# Install system dependencies
+# Install system dependencies including Node.js
 RUN apt-get update && apt-get install -y \
     default-mysql-client postgresql-client \
     procps net-tools nano git curl unzip \
+    && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions using install-php-extensions (recommended by FrankenPHP)
@@ -49,6 +51,14 @@ RUN COMPOSER_MEMORY_LIMIT=-1 composer install \
     --no-scripts \
     --prefer-dist \
     --ignore-platform-reqs
+
+# ✅ Copy package files for npm (for caching)
+COPY package.json package-lock.json* ./
+
+# Install npm dependencies
+RUN if [ -f "package.json" ]; then \
+        npm ci --production=false || npm install; \
+    fi
 
 # ✅ Now copy full project
 COPY . .
