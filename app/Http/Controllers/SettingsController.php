@@ -345,7 +345,8 @@ class SettingsController extends Controller
                 $request->site_logo,
                 [
                     ['name' => 'logo', 'type' => 'png'],
-                ]
+                ],
+                true
             );
             Log::info('LOGO_URL', ['LOGO_URL' => $LOGO_URL]);
             $envs = $request->env;
