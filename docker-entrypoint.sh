@@ -9,6 +9,24 @@ cd /var/www || {
     exit 1
 }
 
+echo "Ensuring uploads directory exists and is writable..."
+
+mkdir -p public/uploads/companies
+mkdir -p public/uploads/media
+mkdir -p public/uploads/settings
+mkdir -p public/uploads/flowmaker
+
+
+# Fix ownership & permissions (CRITICAL for Railway volumes)
+chown -R www-data:www-data public/uploads || true
+chmod -R 775 public/uploads || true
+
+# Ensure new files inherit group ownership
+chmod g+s public/uploads || true
+
+echo "Uploads directory exists and is writable."
+
+
 # Check if application code exists
 if [ ! -f "composer.json" ] && [ ! -f "artisan" ]; then
     echo "WARNING: Application code not found in /var/www"
