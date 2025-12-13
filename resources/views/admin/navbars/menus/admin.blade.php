@@ -49,6 +49,12 @@
             <i class="ni ni-world text-orange"></i> {{ __('Translations') }}
         </a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link " target="_blank"
+            href="{{ url('/log-viewer') }}">
+            <i class="ni ni-world text-orange"></i> {{ __('Log Viewer') }}
+        </a>
+    </li>
     <!--<li class="nav-item ">
         <a class="nav-link " target="_blank"
             href="{{ url('/translations') }}">

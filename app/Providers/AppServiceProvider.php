@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
+use Opcodes\LogViewer\Facades\LogViewer;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -31,6 +33,10 @@ class AppServiceProvider extends ServiceProvider
         if (env('FORCE_HTTPS', false) === true || env('FORCE_HTTPS', 'false') === 'true') {
             URL::forceScheme('https');
         }
+
+        LogViewer::auth(function ($request) {
+            return $request->user() && $request->user()->hasRole('admin');
+        });
 
         Schema::defaultStringLength(191);
         try {
