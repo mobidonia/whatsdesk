@@ -72,5 +72,6 @@ class Kernel extends HttpKernel
         'acivatedProject'   => \App\Http\Middleware\Activation::class,
         'impersonate' => \App\Http\Middleware\Impersonate::class,
         'XssSanitizer' => \App\Http\Middleware\XssSanitization::class,
+        'view-logs' => \App\Http\Middleware\ViewLogs::class,
     ];
 }

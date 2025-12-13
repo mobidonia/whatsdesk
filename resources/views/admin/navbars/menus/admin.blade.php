@@ -49,12 +49,7 @@
             <i class="ni ni-world text-orange"></i> {{ __('Translations') }}
         </a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link " target="_blank"
-            href="{{ url('/log-viewer') }}">
-            <i class="ni ni-world text-orange"></i> {{ __('Log Viewer') }}
-        </a>
-    </li>
+   
     <!--<li class="nav-item ">
         <a class="nav-link " target="_blank"
             href="{{ url('/translations') }}">
@@ -73,6 +68,13 @@
     <li class="nav-item">
         <a class="nav-link " href="{{ url('/backup') }}">
             <i class="ni ni-time-alarm text-orange"></i> {{ __('Backup') }}
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link " target="_blank"
+            href="{{ url('/log-viewer') }}">
+            <i class="ni ni-single-copy-04 text-orange"></i> {{ __('Log Viewer') }}
         </a>
     </li>
 

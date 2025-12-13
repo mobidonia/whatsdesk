@@ -10,7 +10,7 @@ return [
     |
     */
 
-    'enabled' => env('APP_DEBUG', false),
+    'enabled' => env('LOG_VIEWER_ENABLED', true),
 
     'require_auth_in_production' => true,
 
@@ -71,7 +71,7 @@ return [
 
     'middleware' => [
         'web',
-        \Opcodes\LogViewer\Http\Middleware\AuthorizeLogViewer::class,
+        'view-logs',
     ],
 
     /*
