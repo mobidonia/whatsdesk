@@ -85,9 +85,6 @@ class AppServiceProvider extends ServiceProvider
             //Reports on dashboard
             $reportsOnDashboard = [];
 
-            //Get the number of users in the system
-            config(['app.active_users' => User::count()]);
-
             foreach (Module::all() as $key => $module) {
                 if ($module->get('isSubscriptionModule')) {
                     $subscriptionsModules[$module->get('name')] = $module->get('name');

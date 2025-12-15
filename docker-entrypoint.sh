@@ -135,10 +135,11 @@ APP_NAME=${APP_NAME:-WhatsDesk}
 APP_ENV=${APP_ENV:-production}
 APP_CODE_NAME=${APP_CODE_NAME:-wpbox}
 DISABLE_LANDING=${DISABLE_LANDING:-true}
-FORCE_HTTPS=${FORCE_HTTPS:-true}
+FORCE_HTTPS=true
 APP_KEY=
 APP_DEBUG=${APP_DEBUG:-false}
 APP_URL=${APP_URL:-http://localhost}
+ASSETS_URL=${APP_URL:-http://localhost}
 
 TASK_1="Setup SMTP - used for sending emails"
 TASK_1_DOCS="https://mobidonia.notion.site/Mail-server-Required-59f5add2a79e41b38a11a85a6735901c?pvs=4"
