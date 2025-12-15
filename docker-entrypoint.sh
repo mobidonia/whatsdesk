@@ -133,6 +133,9 @@ if [ ! -f ".env" ]; then
         cat > .env <<EOF
 APP_NAME=${APP_NAME:-WhatsDesk}
 APP_ENV=${APP_ENV:-production}
+APP_CODE_NAME=${APP_CODE_NAME:-wpbox}
+DISABLE_LANDING=${DISABLE_LANDING:-true}
+FORCE_HTTPS=${FORCE_HTTPS:-true}
 APP_KEY=
 APP_DEBUG=${APP_DEBUG:-false}
 APP_URL=${APP_URL:-http://localhost}
@@ -142,7 +145,7 @@ TASK_1_DOCS="https://mobidonia.notion.site/Mail-server-Required-59f5add2a79e41b3
 TASK_2="Setup Pusher - used for live chat"
 TASK_2_DOCS="https://www.notion.so/mobidonia/Pusher-Setup-Required-6de563c4d7344343b57ebd015181415e"
 
-LOG_CHANNEL=stack
+LOG_CHANNEL=daily
 LOG_LEVEL=debug
 
 DB_CONNECTION=mysql
@@ -152,7 +155,7 @@ DB_DATABASE=${DB_DATABASE:-laravel}
 DB_USERNAME=${DB_USERNAME:-laravel}
 DB_PASSWORD=${DB_PASSWORD:-root}
 
-BROADCAST_DRIVER=reverb
+BROADCAST_DRIVER=pusher
 CACHE_DRIVER=file
 CACHE_STORE=file
 FILESYSTEM_DISK=local
