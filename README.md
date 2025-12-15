@@ -1,5 +1,7 @@
 # WhatsDesk -  WhatsApp marketing and automation platform
 
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/kS6Qxz?referralCode=0BbSHu&utm_medium=integration&utm_source=template&utm_campaign=generic)
+
 <p align="center">
   <img src="https://whatsdesk.mobidonia.com/default/wpbox/herocalls.png" alt="WhatsDesk Banner" style="max-width: 100%; height: auto;">
 </p>
