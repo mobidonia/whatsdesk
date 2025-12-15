@@ -137,6 +137,11 @@ APP_KEY=
 APP_DEBUG=${APP_DEBUG:-false}
 APP_URL=${APP_URL:-http://localhost}
 
+TASK_1="Setup SMTP - used for sending emails"
+TASK_1_DOCS="https://mobidonia.notion.site/Mail-server-Required-59f5add2a79e41b38a11a85a6735901c?pvs=4"
+TASK_2="Setup Pusher - used for live chat"
+TASK_2_DOCS="https://www.notion.so/mobidonia/Pusher-Setup-Required-6de563c4d7344343b57ebd015181415e"
+
 LOG_CHANNEL=stack
 LOG_LEVEL=debug
 
@@ -152,6 +157,7 @@ CACHE_DRIVER=file
 CACHE_STORE=file
 FILESYSTEM_DISK=local
 QUEUE_CONNECTION=database
+CAMPAIGN_SENDING_TYPE=queues
 SESSION_DRIVER=file
 SESSION_LIFETIME=120
 VIEW_COMPILED_PATH=${VIEW_COMPILED_PATH:-/var/www/storage/framework/views}
@@ -258,6 +264,9 @@ fi
 
 # Determine what service to start based on command
 if [ -z "$1" ] || [ "$1" = "octane" ] || [ "$1" = "frankenphp" ]; then
+    # Start queue worker in background
+    echo "Starting Queue Worker in background..."
+    php artisan queue:work --sleep=3 --tries=3 --max-time=3600 &
     # Start FrankenPHP via Octane
     echo "Starting FrankenPHP (Octane)..."
     exec php artisan octane:start --server=frankenphp
