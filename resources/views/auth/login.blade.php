@@ -1,4 +1,11 @@
 <x-guest-layout>
+
+    @if (config('app.active_users') == 0)
+       <!-- Redirect to the register page -->
+       <script>
+        window.location.href = '{{ route('register') }}';
+       </script>
+    @endif
     <x-authentication-card>
         <x-slot name="logo">
             <x-authentication-card-logo />

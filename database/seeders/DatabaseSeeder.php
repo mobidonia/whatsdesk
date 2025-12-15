@@ -19,34 +19,24 @@ class DatabaseSeeder extends Seeder
 
         $this->call(RolesTableSeeder::class);
 
-        //Then create the admin user
+        if(config('settings.is_demo',false)){
+            //Then create the admin user
 
-        //Company owner s
-        $adminID = DB::table('users')->insertGetId([
-            'name' => 'Admin',
-            'email' => env('ADMIN_EMAIL', 'admin@example.com'),
-            'password' => Hash::make(env('ADMIN_PASSWORD', 'secret')),
-            'email_verified_at' => now(),
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        //Do the same in the ltu_contributors
-        try {
-            $contributorID = DB::table('ltu_contributors')->insertGetId([
+            //Company owner s
+            $adminID = DB::table('users')->insertGetId([
                 'name' => 'Admin',
                 'email' => env('ADMIN_EMAIL', 'admin@example.com'),
                 'password' => Hash::make(env('ADMIN_PASSWORD', 'secret')),
-                'role' => 1,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ]);
-        } catch (\Exception $e) {
-            //
+                'email_verified_at' => now(),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+
+            //Assign owner role
+            $admin = User::find($adminID);
+            $admin->assignRole('admin');
         }
 
-        //Assign owner role
-        $admin = User::find($adminID);
-        $admin->assignRole('admin');
+        
     }
 }

@@ -5,6 +5,7 @@ namespace App\Providers;
 use Akaunting\Module\Facade as Module;
 use App\Models\Company;
 use App\Models\Plans;
+use App\Models\User;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
@@ -84,6 +85,9 @@ class AppServiceProvider extends ServiceProvider
             //Reports on dashboard
             $reportsOnDashboard = [];
 
+            //Get the number of users in the system
+            config(['app.active_users' => User::count()]);
+
             foreach (Module::all() as $key => $module) {
                 if ($module->get('isSubscriptionModule')) {
                     $subscriptionsModules[$module->get('name')] = $module->get('name');
@@ -119,6 +123,7 @@ class AppServiceProvider extends ServiceProvider
 
            
 
+           
           
 
             //Check if we have the pricing module
@@ -135,6 +140,7 @@ class AppServiceProvider extends ServiceProvider
 
                     //Let the platform know that the register is disabled
                     config(['app.disable_register' => true]);
+
                 }
 
                 foreach (config('config.env.1.fields') as $key => $field) {

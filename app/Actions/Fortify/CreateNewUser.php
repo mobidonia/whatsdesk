@@ -41,6 +41,12 @@ class CreateNewUser implements CreatesNewUsers
             'phone' =>$phone, // Add 'phone' to the user creation
         ]);
 
+        //If the user that we just creted, is the only user in the system, then we need to assign the admin role to the user
+        if (User::count() == 1) {
+            $user->assignRole('admin');
+            return $user;
+        }
+
         //Passed by the form ( only if register from company page)
         $company_id=null;
         try {
