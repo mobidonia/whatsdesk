@@ -1,5 +1,8 @@
 # WhatsDesk -  WhatsApp marketing and automation platform
 
+Grow your organic traffic with [TryRoki](https://tryroki.com)
+
+
 [![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/whatsdesk?referralCode=0BbSHu&utm_medium=integration&utm_source=template&utm_campaign=generic)
 
 <p align="center">
