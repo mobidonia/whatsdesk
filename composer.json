@@ -10,7 +10,6 @@
         "akaunting/laravel-module": "^2.0",
         "akaunting/laravel-money": "^4.0",
         "berkayk/onesignal-laravel": "^2.0",
-        "dacoto/laravel-wizard-installer": "^1.0",
         "doctrine/dbal": "^3.6",
         "fakerphp/faker": "^1.24",
         "filament/tables": "^3.2",
